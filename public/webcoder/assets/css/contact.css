@@ -1,0 +1,50 @@
+.contact-information-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:3rem;
+}
+
+.contact-information-container > *{
+    flex:1;
+    flex-basis:25rem;
+}
+
+
+.contact-information-container > form{
+    display:grid;
+    gap:1rem;
+    grid-template-columns:repeat(auto-fill,minmax(min(20rem,100%),1fr));
+}
+
+.contact-information-container > form > :is(textarea,input){
+    padding:0.5rem 1rem;
+}
+.contact-information-container > form > :is(textarea,button){
+    grid-column:1/-1;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.form-control{
+    margin-bottom:0;
+}
+
+.contact-information > ul > li{
+        border-bottom: 1px solid #979797;
+    margin-bottom: 33px;
+    padding-bottom: 8px;
+    color: #121212;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight:500;
+}
+
+.contact-information > ul > li > span{
+    font-weight:600;
+}

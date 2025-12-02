@@ -1,0 +1,10 @@
+.main-img > img{
+    width:100%;
+    max-height:30rem;
+    object-fit: contain;
+}
+
+.detail__img{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(min(35rem,100%),1fr));
+}

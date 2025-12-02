@@ -1,0 +1,57 @@
+.section__main{
+    text-align:center;
+}
+.section__main > form{
+    display:flex;
+    flex-direction:column;
+    gap:50px;
+    align-items:center;
+    
+}
+.section__main .input__box{
+   display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:min(450px,90%);
+}
+.section__main .input__box label{
+    font-size:40px;
+}
+.section__main .input__box input{
+   border: 1px solid grey;
+    border-radius: 16px;
+    padding: 10px 15px;
+}
+.section__main .input__btn input{
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 10px 65px;
+    background:none;
+    transition:.5s ease;
+    cursor:pointer;
+}
+.section__main .input__btn input:hover{
+    background:#222529;
+    color:#fff;
+}
+.section__main >ul{
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    text-align:start;
+    margin-top:10px;
+}
+.section__main >ul a{
+    color:#000;
+    font-size:20px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:.5s ease;
+     transform:scale(1);
+}
+.section__main >ul a:hover{
+    transform:scale(1.1);
+}

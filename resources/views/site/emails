@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation Email</title>
+</head>
+<body>
+    <h1>Confirmation Email</h1>
+    <p>Thank you for registering. Please confirm your email address by clicking the link below:</p>
+    <a href="{{ url('activation', $confirmationCode) }}">Confirm Your Email</a>
+</body>
+</html>
