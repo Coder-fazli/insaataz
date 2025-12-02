@@ -493,8 +493,15 @@ class ProductController extends Controller
             ->leftJoin('brands', 'brands.id', '=', 'products.brand_id')
             ->where('products.status', Status::ACTIVE)
             ->where(function($query) use ($field, $search, $locale) {
+                // Normalize for Turkish characters (ı/i)
+                $searchNormalized = str_replace(['ı', 'İ'], ['i', 'i'], mb_strtolower($search));
+
                 $query->where($field, 'like', "%{$search}%")
-                      ->orWhereRaw("LOWER(JSON_EXTRACT(brands.title, '$.{$locale}')) LIKE LOWER(?)", ["%{$search}%"]);
+                      ->orWhereRaw("LOWER(JSON_EXTRACT(brands.title, '$.{$locale}')) LIKE LOWER(?)", ["%{$search}%"])
+                      ->orWhereRaw("LOWER(JSON_EXTRACT(categories.title, '$.{$locale}')) LIKE LOWER(?)", ["%{$search}%"])
+                      // Search with normalized Turkish characters
+                      ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(products.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"])
+                      ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(categories.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"]);
             })
             ->orderByRaw("
                 CASE
