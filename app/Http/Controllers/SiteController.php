@@ -184,8 +184,11 @@ class SiteController extends Controller
                     ->subject('Yeni əlaqə forması: ' . $data['subject']);
                 $message->replyTo($data['email'], $data['fullname']);
             });
+
+            \Log::info('Contact form email sent successfully to: info@orelinsaat.az');
         } catch (\Exception $e) {
             \Log::error('Contact form email error: ' . $e->getMessage());
+            \Log::error('Stack trace: ' . $e->getTraceAsString());
         }
 
         if ($request->ajax()) {
