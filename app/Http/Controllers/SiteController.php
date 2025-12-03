@@ -180,12 +180,12 @@ class SiteController extends Controller
         // Send email notification
         try {
             \Mail::send('emails.contact', $data, function ($message) use ($data) {
-                $message->to('info@orelinsaat.az')
+                $message->to('office@orelinsaat.az')
                     ->subject('Yeni əlaqə forması: ' . $data['subject']);
                 $message->replyTo($data['email'], $data['fullname']);
             });
 
-            \Log::info('Contact form email sent successfully to: info@orelinsaat.az');
+            \Log::info('Contact form email sent successfully to: office@orelinsaat.az');
         } catch (\Exception $e) {
             \Log::error('Contact form email error: ' . $e->getMessage());
             \Log::error('Stack trace: ' . $e->getTraceAsString());
