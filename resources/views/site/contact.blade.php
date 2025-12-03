@@ -69,30 +69,6 @@
 @endsection
 
 @push('footer')
-    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-    <!--<script>-->
-    <!--    $(document).ready(function() {-->
-    <!--        $("form").submit(function(event) {-->
-                event.preventDefault(); // Sayfanın yeniden yüklenmesini engeller
-        
-                var formData = $(this).serialize(); // Form verilerini alır
-        
-    <!--            $.ajax({-->
-                    url: "{{ route('contactForm') }}", // Rota URL'si
-    <!--                type: "POST",-->
-                    data: formData, // Form verileri
-    <!--                success: function(response) {-->
-                        // İşlem başarılıysa burada bir şeyler yapabilirsiniz
-    <!--                    console.log(response);-->
-    <!--                },-->
-    <!--                error: function(xhr) {-->
-                        // İşlem başarısızsa burada hata işlemleri yapabilirsiniz
-    <!--                    console.log(xhr.responseText);-->
-    <!--                }-->
-    <!--            });-->
-    <!--        });-->
-    <!--    });-->
-    <!--</script>-->
 @endpush
 
 
