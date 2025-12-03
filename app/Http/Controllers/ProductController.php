@@ -505,9 +505,9 @@ class ProductController extends Controller
                       ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(products.desc, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"])
                       ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(categories.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"]);
 
-                // Special case: if searching for "firat" or "fırat", also include category 121 (Dubleks PVC)
+                // Special case: if searching for "firat" or "fırat", also include categories 80 (PPRC) and 121 (Dubleks PVC)
                 if (stripos($searchNormalized, 'firat') !== false) {
-                    $query->orWhere('products.category_id', 121);
+                    $query->orWhereIn('products.category_id', [80, 121]);
                 }
             })
             ->orderByRaw("
