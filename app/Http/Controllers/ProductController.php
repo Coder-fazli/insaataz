@@ -499,8 +499,10 @@ class ProductController extends Controller
                 $query->where($field, 'like', "%{$search}%")
                       ->orWhereRaw("LOWER(JSON_EXTRACT(brands.title, '$.{$locale}')) LIKE LOWER(?)", ["%{$search}%"])
                       ->orWhereRaw("LOWER(JSON_EXTRACT(categories.title, '$.{$locale}')) LIKE LOWER(?)", ["%{$search}%"])
+                      ->orWhereRaw("LOWER(JSON_EXTRACT(products.desc, '$.{$locale}')) LIKE LOWER(?)", ["%{$search}%"])
                       // Search with normalized Turkish characters
                       ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(products.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"])
+                      ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(products.desc, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"])
                       ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(categories.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"]);
             })
             ->orderByRaw("
