@@ -180,7 +180,7 @@ class SiteController extends Controller
         // Send email notification
         try {
             \Mail::send('emails.contact', $data, function ($message) use ($data) {
-                $message->to('ondigital.az@gmail.com')
+                $message->to('info@orelinsaat.az')
                     ->subject('Yeni əlaqə forması: ' . $data['subject']);
                 $message->replyTo($data['email'], $data['fullname']);
             });

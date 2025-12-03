@@ -4,4 +4,3 @@ deployment:
     - export DEPLOYPATH=/home/hbecxexb/public_html/
     - /bin/cp -R * $DEPLOYPATH
     - cd $DEPLOYPATH && /usr/local/bin/php artisan config:cache
-    - cd $DEPLOYPATH && /usr/local/bin/php artisan email:test-setup
