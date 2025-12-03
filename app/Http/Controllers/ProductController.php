@@ -519,6 +519,12 @@ class ProductController extends Controller
                     ELSE 5
                 END
             ", ["%{$search}%", "%{$search}%", "{$search}%", "% {$search}%"])
+            ->orderByRaw("
+                CASE
+                    WHEN LOWER(JSON_EXTRACT(products.title, '$.{$locale}')) LIKE '%boru%' THEN 1
+                    ELSE 2
+                END
+            ")
             ->orderBy('products.id', 'desc')
             ->get();
 
