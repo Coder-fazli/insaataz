@@ -3,4 +3,6 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/hbecxexb/public_html/
     - /bin/cp -R * $DEPLOYPATH
+    - cd $DEPLOYPATH && sed -i 's/MAIL_ENCRYPTION=tls/MAIL_ENCRYPTION=ssl/g' .env
+    - cd $DEPLOYPATH && /usr/local/bin/php artisan config:clear
     - cd $DEPLOYPATH && /usr/local/bin/php artisan config:cache
