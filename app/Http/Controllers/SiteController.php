@@ -177,6 +177,17 @@ class SiteController extends Controller
 
         ContactForm::create($data);
 
+        // Send email notification
+        try {
+            \Mail::send('emails.contact', $data, function ($message) use ($data) {
+                $message->to('ondigital.az@gmail.com')
+                    ->subject('Yeni əlaqə forması: ' . $data['subject']);
+                $message->replyTo($data['email'], $data['fullname']);
+            });
+        } catch (\Exception $e) {
+            \Log::error('Contact form email error: ' . $e->getMessage());
+        }
+
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
