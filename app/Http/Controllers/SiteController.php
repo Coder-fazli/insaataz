@@ -179,10 +179,18 @@ class SiteController extends Controller
 
         // Send email notification
         try {
-            \Mail::send('emails.contact', $data, function ($message) use ($data) {
+            $emailBody = "Yeni əlaqə forması mesajı\n\n";
+            $emailBody .= "Ad və Soyad: {$data['fullname']}\n";
+            $emailBody .= "Email: {$data['email']}\n";
+            $emailBody .= "Telefon: {$data['phone']}\n";
+            $emailBody .= "Mövzu: {$data['subject']}\n\n";
+            $emailBody .= "Mesaj:\n{$data['message']}\n\n";
+            $emailBody .= "Bu mesaj orelinsaat.az saytının əlaqə formasından göndərilib.";
+
+            \Mail::raw($emailBody, function ($message) use ($data) {
                 $message->to('office@orelinsaat.az')
-                    ->subject('Yeni əlaqə forması: ' . $data['subject']);
-                $message->replyTo($data['email'], $data['fullname']);
+                    ->subject('Yeni əlaqə forması: ' . $data['subject'])
+                    ->replyTo($data['email'], $data['fullname']);
             });
 
             \Log::info('Contact form email sent successfully to: office@orelinsaat.az');
