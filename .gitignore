@@ -2,6 +2,7 @@
 /public/build
 /public/hot
 /public/storage
+!/public/storage/footer-logo.png
 /storage/*.key
 /vendor
 /nova

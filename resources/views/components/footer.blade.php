@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-md-6 col-6 mb-4 mb-lg-0">
                 <div class="footer-logo mb-3">
                     <a href="{{route('home')}}">
-                        <img src="{{asset('storage/'.$logo)}}" alt="{{config('app.name')}}" style="max-width: 180px; height: auto;">
+                        <img src="{{asset('storage/footer-logo.png')}}" alt="{{config('app.name')}}" style="max-width: 180px; height: auto;">
                     </a>
                 </div>
             </div>
