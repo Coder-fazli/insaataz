@@ -118,15 +118,15 @@
 
                 <!-- Правая колонка с текстом -->
                 <div class="col-12 col-sm-12 col-md-7 col-lg-6 col-xl-6 col-xxl-6">
-                    <div class="about-content-card" style="background: #fff; padding: 45px; border-radius: 16px; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06); border: 1px solid rgba(43, 87, 151, 0.08);">
+                    <div class="about-content" style="padding-left: 20px;">
                         <!-- Заголовок секции -->
-                        <div style="margin-bottom: 25px;">
-                            <span style="display: inline-block; color: #2b5797; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px;">Haqqımızda</span>
-                            <h2 style="font-size: 28px; font-weight: 600; color: #1a1a1a; line-height: 1.4; margin-bottom: 20px;">OREL İnşaat</h2>
+                        <div style="margin-bottom: 30px;">
+                            <span style="display: inline-block; color: #2b5797; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">Haqqımızda</span>
+                            <h2 style="font-size: 42px; font-weight: 700; color: #1a1a1a; line-height: 1.3; margin-bottom: 25px;">OREL İnşaat</h2>
                         </div>
 
                         <!-- Описание -->
-                        <div class="about-description" style="color: #5a5a5a; font-size: 15px; line-height: 1.7; font-weight: 400;">
+                        <div class="about-description" style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 35px;">
                             {!! $about->description !!}
                         </div>
                     </div>
@@ -149,51 +149,49 @@
             #aboutUs .about-description ul {
                 list-style: none;
                 padding: 0;
-                margin: 20px 0;
+                margin: 25px 0;
             }
 
             #aboutUs .about-description ul li {
                 position: relative;
-                padding-left: 38px;
-                margin-bottom: 14px;
-                color: #5a5a5a;
-                font-size: 15px;
-                line-height: 1.6;
-                font-weight: 400;
+                padding-left: 35px;
+                margin-bottom: 16px;
+                color: #4a4a4a;
+                line-height: 1.7;
                 transition: all 0.3s ease;
             }
 
             #aboutUs .about-description ul li:before {
-                content: "✅";
+                content: "";
                 position: absolute;
                 left: 0;
-                top: 0px;
-                font-size: 18px;
+                top: 8px;
+                width: 20px;
+                height: 2px;
+                background: linear-gradient(90deg, #2b5797 0%, #4a7bc8 100%);
+                border-radius: 2px;
                 transition: all 0.3s ease;
             }
 
             #aboutUs .about-description ul li:hover {
                 color: #2b5797;
-                padding-left: 42px;
+                padding-left: 40px;
             }
 
             #aboutUs .about-description ul li:hover:before {
-                transform: scale(1.2);
+                width: 25px;
             }
 
             /* Стили для параграфов */
             #aboutUs .about-description p {
-                margin-bottom: 18px;
+                margin-bottom: 20px;
                 font-weight: 400;
-                font-size: 15px;
-                line-height: 1.7;
-                color: #5a5a5a;
             }
 
             #aboutUs .about-description p strong,
             #aboutUs .about-description p b {
-                color: #1a1a1a;
-                font-weight: 400;
+                color: #2b5797;
+                font-weight: 600;
             }
 
             /* Адаптивность */
@@ -202,22 +200,17 @@
                     padding: 60px 0 !important;
                 }
 
-                .about-content-card {
-                    padding: 30px 25px !important;
+                .about-content {
+                    padding-left: 0 !important;
                     margin-top: 40px;
                 }
 
-                .about-content-card h2 {
-                    font-size: 24px !important;
+                .about-content h2 {
+                    font-size: 32px !important;
                 }
 
                 .about-logo-container {
                     padding: 30px !important;
-                }
-
-                #aboutUs .about-description p,
-                #aboutUs .about-description ul li {
-                    font-size: 14px !important;
                 }
             }
         </style>
