@@ -164,21 +164,11 @@
             }
 
             #aboutUs .about-description ul li:before {
-                content: "\f00c";
-                font-family: "Font Awesome 6 Free";
-                font-weight: 900;
+                content: "✅";
                 position: absolute;
                 left: 0;
-                top: 2px;
-                width: 22px;
-                height: 22px;
-                background: linear-gradient(135deg, #2b5797 0%, #4a7bc8 100%);
-                color: #fff;
-                font-size: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 4px;
+                top: 0px;
+                font-size: 18px;
                 transition: all 0.3s ease;
             }
 
@@ -188,8 +178,7 @@
             }
 
             #aboutUs .about-description ul li:hover:before {
-                transform: scale(1.1);
-                box-shadow: 0 3px 10px rgba(43, 87, 151, 0.3);
+                transform: scale(1.2);
             }
 
             /* Стили для параграфов */
@@ -204,7 +193,7 @@
             #aboutUs .about-description p strong,
             #aboutUs .about-description p b {
                 color: #1a1a1a;
-                font-weight: 500;
+                font-weight: 400;
             }
 
             /* Адаптивность */
