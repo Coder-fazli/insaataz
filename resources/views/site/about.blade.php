@@ -93,40 +93,19 @@
     <!--    </div>-->
     <!--</section>-->
 
-    <section id="aboutUs" style="background: #fff; padding: 100px 0; position: relative; overflow: hidden;">
-        <!-- Декоративные элементы -->
-        <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: linear-gradient(135deg, rgba(43, 87, 151, 0.05) 0%, rgba(43, 87, 151, 0.02) 100%); border-radius: 50%; z-index: 0;"></div>
-        <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: linear-gradient(135deg, rgba(43, 87, 151, 0.03) 0%, rgba(43, 87, 151, 0.01) 100%); border-radius: 50%; z-index: 0;"></div>
-
-        <div class="container" style="position: relative; z-index: 1;">
-            <div class="row justify-content-between align-items-center" style="gap: 60px 0;">
-                <!-- Левая колонка с логотипом -->
-                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
-                    <div class="about-logo-wrapper" style="position: relative;">
-                        <!-- Акцентная линия сверху -->
-                        <div style="width: 80px; height: 4px; background: linear-gradient(90deg, #2b5797 0%, #4a7bc8 100%); margin-bottom: 40px; border-radius: 2px;"></div>
-
-                        <!-- Логотип с анимацией -->
-                        <div class="about-logo-container" style="background: #fff; padding: 50px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); transition: all 0.4s ease; position: relative;">
-                            <img src="{{asset('storage/'.$about->image)}}" alt="OREL İnşaat" style="width: 100%; height: auto; transition: transform 0.4s ease;">
+    <section id="aboutUs" style="color:black; padding: 80px 0;" >
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 col-xxl-5">
+                    <div class="left">
+                        <div class="head" style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                            <img src="{{asset('storage/'.$about->image)}}" style="width: 100%; height: auto;">
                         </div>
-
-                        <!-- Декоративный акцент -->
-                        <div style="position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px; background: linear-gradient(135deg, #2b5797 0%, #4a7bc8 100%); border-radius: 20px; z-index: -1; opacity: 0.15;"></div>
                     </div>
                 </div>
-
-                <!-- Правая колонка с текстом -->
-                <div class="col-12 col-sm-12 col-md-7 col-lg-6 col-xl-6 col-xxl-6">
-                    <div class="about-content" style="padding-left: 20px;">
-                        <!-- Заголовок секции -->
-                        <div style="margin-bottom: 30px;">
-                            <span style="display: inline-block; color: #2b5797; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">Haqqımızda</span>
-                            <h2 style="font-size: 42px; font-weight: 700; color: #1a1a1a; line-height: 1.3; margin-bottom: 25px;">OREL İnşaat</h2>
-                        </div>
-
-                        <!-- Описание -->
-                        <div class="about-description" style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 35px;">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <div class="right about-text-card" style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.06); border: 1px solid #f0f0f0;">
+                        <div class="about-text-content">
                             {!! $about->description !!}
                         </div>
                     </div>
@@ -135,83 +114,46 @@
         </div>
 
         <style>
-            /* Hover эффект для логотипа */
-            .about-logo-container:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 20px 50px rgba(43, 87, 151, 0.15);
+            /* Стили ТОЛЬКО для секции aboutUs */
+            #aboutUs .about-text-content {
+                font-size: 15px;
+                line-height: 1.7;
+                color: #333;
             }
 
-            .about-logo-container:hover img {
-                transform: scale(1.05);
+            #aboutUs .about-text-content p {
+                font-size: 15px !important;
+                font-weight: 400 !important;
+                line-height: 1.7;
+                margin-bottom: 15px;
             }
 
-            /* Стили для списков в описании */
-            #aboutUs .about-description ul {
+            #aboutUs .about-text-content strong,
+            #aboutUs .about-text-content b {
+                font-weight: 400 !important;
+            }
+
+            #aboutUs .about-text-content ul {
                 list-style: none;
                 padding: 0;
-                margin: 25px 0;
+                margin: 15px 0;
             }
 
-            #aboutUs .about-description ul li {
-                position: relative;
-                padding-left: 35px;
-                margin-bottom: 16px;
-                color: #4a4a4a;
+            #aboutUs .about-text-content ul li {
+                font-size: 15px !important;
+                font-weight: 400 !important;
                 line-height: 1.7;
-                transition: all 0.3s ease;
+                margin-bottom: 12px;
+                padding-left: 30px;
+                position: relative;
             }
 
-            #aboutUs .about-description ul li:before {
-                content: "";
+            #aboutUs .about-text-content ul li:before {
+                content: "✅";
                 position: absolute;
                 left: 0;
-                top: 8px;
-                width: 20px;
-                height: 2px;
-                background: linear-gradient(90deg, #2b5797 0%, #4a7bc8 100%);
-                border-radius: 2px;
-                transition: all 0.3s ease;
-            }
-
-            #aboutUs .about-description ul li:hover {
-                color: #2b5797;
-                padding-left: 40px;
-            }
-
-            #aboutUs .about-description ul li:hover:before {
-                width: 25px;
-            }
-
-            /* Стили для параграфов */
-            #aboutUs .about-description p {
-                margin-bottom: 20px;
-                font-weight: 400;
-            }
-
-            #aboutUs .about-description p strong,
-            #aboutUs .about-description p b {
-                color: #2b5797;
-                font-weight: 600;
-            }
-
-            /* Адаптивность */
-            @media (max-width: 768px) {
-                #aboutUs {
-                    padding: 60px 0 !important;
-                }
-
-                .about-content {
-                    padding-left: 0 !important;
-                    margin-top: 40px;
-                }
-
-                .about-content h2 {
-                    font-size: 32px !important;
-                }
-
-                .about-logo-container {
-                    padding: 30px !important;
-                }
+                top: 0;
+                font-size: 16px;
             }
         </style>
     </section>
