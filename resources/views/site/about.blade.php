@@ -119,18 +119,19 @@
                 font-size: 15px;
                 line-height: 1.7;
                 color: #333;
+                font-weight: 300;
             }
 
             #aboutUs .about-text-content p {
                 font-size: 15px !important;
-                font-weight: 400 !important;
+                font-weight: 300 !important;
                 line-height: 1.7;
                 margin-bottom: 15px;
             }
 
             #aboutUs .about-text-content strong,
             #aboutUs .about-text-content b {
-                font-weight: 400 !important;
+                font-weight: 300 !important;
             }
 
             #aboutUs .about-text-content ul {
@@ -141,7 +142,7 @@
 
             #aboutUs .about-text-content ul li {
                 font-size: 15px !important;
-                font-weight: 400 !important;
+                font-weight: 300 !important;
                 line-height: 1.7;
                 margin-bottom: 12px;
                 padding-left: 30px;
