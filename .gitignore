@@ -2,7 +2,6 @@
 /public/build
 /public/hot
 /public/storage
-!/public/storage/footer-logo.png
 /storage/*.key
 /vendor
 /nova
@@ -54,3 +53,4 @@ storage/app.zip
 /public/images/*
 !/public/images/logo.png
 !/public/images/favicon.ico
+!/public/images/footer-logo.png
