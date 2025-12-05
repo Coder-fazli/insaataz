@@ -119,7 +119,7 @@
                 font-size: 15px;
                 line-height: 1.7;
                 color: #333;
-                font-weight: 300;
+                font-weight: 500;
             }
 
             #aboutUs .about-text-content h1,
@@ -129,7 +129,7 @@
             #aboutUs .about-text-content h5,
             #aboutUs .about-text-content h6 {
                 font-size: 15px !important;
-                font-weight: 300 !important;
+                font-weight: 500 !important;
                 line-height: 1.7;
                 margin-bottom: 15px;
                 color: #333;
@@ -137,37 +137,42 @@
 
             #aboutUs .about-text-content p {
                 font-size: 15px !important;
-                font-weight: 300 !important;
+                font-weight: 500 !important;
                 line-height: 1.7;
                 margin-bottom: 15px;
             }
 
             #aboutUs .about-text-content strong,
             #aboutUs .about-text-content b {
-                font-weight: 300 !important;
+                font-weight: 500 !important;
             }
 
             #aboutUs .about-text-content ul {
-                list-style: none;
-                padding: 0;
-                margin: 15px 0;
+                list-style: none !important;
+                padding: 0 !important;
+                margin: 15px 0 !important;
             }
 
             #aboutUs .about-text-content ul li {
                 font-size: 15px !important;
-                font-weight: 300 !important;
-                line-height: 1.7;
-                margin-bottom: 12px;
-                padding-left: 30px;
-                position: relative;
+                font-weight: 500 !important;
+                line-height: 1.7 !important;
+                margin-bottom: 12px !important;
+                padding-left: 30px !important;
+                position: relative !important;
+                list-style: none !important;
+            }
+
+            #aboutUs .about-text-content ul li::marker {
+                display: none !important;
             }
 
             #aboutUs .about-text-content ul li:before {
-                content: "✅";
-                position: absolute;
-                left: 0;
-                top: 0;
-                font-size: 16px;
+                content: "✅" !important;
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                font-size: 16px !important;
             }
         </style>
     </section>
