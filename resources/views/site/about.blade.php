@@ -254,32 +254,26 @@
     </section>
     
     <div class="videos_container">
-    <div class="videos">
-        <div class="container">
-        <div class="col-12" >
-            <div class="center">
-                <h2>{{__('site.ghazanxana_title')}}</h2>
-                <!--<p>{{__('site.cert_desc')}}</p>-->
+        <div class="videos">
+            <div class="container">
+                <div class="col-12">
+                    <div class="center">
+                        <h2>Mediada biz</h2>
+                    </div>
+                </div>
+                <div class="youtube-video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    <iframe
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                        src="https://www.youtube.com/embed/qTKguKditog"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
             </div>
         </div>
-        <video style="max-width: 100%" width="100%" height="auto" controls preload="metadata" loading="lazy">
-            <source src="{{asset('storage/videos/video-qazanxana.mp4')}}" type="video/mp4">
-        </video>
-        </div>
-    </div>
-      <div class="videos">
-        <div class="container">
-        <div class="col-12" >
-            <div class="center">
-                <h2>{{__('site.radio_title')}}</h2>
-                <!--<p>{{__('site.cert_desc')}}</p>-->
-            </div>
-        </div>
-        <video style="max-width: 100%" width="100%" height="auto" controls preload="metadata" loading="lazy">
-            <source src="{{asset('storage/videos/video-radio.mp4')}}" type="video/mp4">
-        </video>
-        </div>
-    </div>
     </div>
 
     <!-- Partner section end -->
