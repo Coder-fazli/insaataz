@@ -27,7 +27,15 @@
                                     </span>
                                 </h5>
                                 <h4 class="blog-header-text">{{$value->title}}</h4>
-                                {!! Str::limit($value->description, 170)!!}
+                                <div class="card__description">
+                                    {!! Str::limit($value->description, 170)!!}
+                                </div>
+                                <div class="card__button">
+                                    <span class="read-more-btn">
+                                        Daha ətraflı
+                                        <i class="fa fa-arrow-right"></i>
+                                    </span>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -170,12 +178,52 @@
             color: #2b5797;
         }
 
-        .blog__card .card__text p {
+        .blog__card .card__text .card__description {
             font-size: 14px;
             color: #5a5a5a;
             line-height: 1.6;
             font-weight: 400;
             flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .blog__card .card__text p {
+            font-size: 14px;
+            color: #5a5a5a;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Минималистичная кнопка "Подробнее" */
+        .blog__card .card__button {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .blog__card .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #2b5797;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog__card .read-more-btn i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog__card:hover .read-more-btn {
+            gap: 12px;
+        }
+
+        .blog__card:hover .read-more-btn i {
+            transform: translateX(5px);
         }
 
         /* Пагинация */
