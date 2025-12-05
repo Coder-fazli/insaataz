@@ -122,6 +122,19 @@
                 font-weight: 300;
             }
 
+            #aboutUs .about-text-content h1,
+            #aboutUs .about-text-content h2,
+            #aboutUs .about-text-content h3,
+            #aboutUs .about-text-content h4,
+            #aboutUs .about-text-content h5,
+            #aboutUs .about-text-content h6 {
+                font-size: 15px !important;
+                font-weight: 300 !important;
+                line-height: 1.7;
+                margin-bottom: 15px;
+                color: #333;
+            }
+
             #aboutUs .about-text-content p {
                 font-size: 15px !important;
                 font-weight: 300 !important;
