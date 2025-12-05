@@ -278,6 +278,118 @@
 
     <!-- Partner section end -->
     <!-- ================================= -->
+
+    <style>
+        /* Минималистичные улучшения для всей страницы */
+
+        /* Карточки сертификатов и партнеров */
+        #certificate .swiper-slide img {
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: #fff;
+            padding: 15px;
+        }
+
+        #certificate .swiper-slide img:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(43, 87, 151, 0.2);
+        }
+
+        /* Кнопки навигации слайдера */
+        .swiper-next, .swiper-prev, .partner-next, .partner-prev {
+            width: 45px;
+            height: 45px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            color: #2b5797;
+        }
+
+        .swiper-next:hover, .swiper-prev:hover, .partner-next:hover, .partner-prev:hover {
+            background: #2b5797;
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(43, 87, 151, 0.3);
+        }
+
+        /* Секции - добавляем padding и фон */
+        #certificate {
+            padding: 60px 0;
+            background: #fafbfc;
+        }
+
+        #certificate:first-of-type {
+            background: #fff;
+        }
+
+        /* Заголовки секций */
+        #certificate .center h2 {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        #certificate .center h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2b5797 0%, #4a7bc8 100%);
+            border-radius: 2px;
+        }
+
+        /* YouTube видео контейнер */
+        .youtube-video-wrapper {
+            transition: all 0.3s ease;
+        }
+
+        .youtube-video-wrapper:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
+            transform: translateY(-5px);
+        }
+
+        /* Улучшение карточки aboutUs */
+        #aboutUs .about-text-card {
+            transition: all 0.3s ease;
+        }
+
+        #aboutUs .about-text-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+            transform: translateY(-3px);
+        }
+
+        #aboutUs .head {
+            transition: all 0.3s ease;
+        }
+
+        #aboutUs .head:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+            transform: translateY(-3px);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            #certificate {
+                padding: 40px 0;
+            }
+
+            .swiper-next, .swiper-prev, .partner-next, .partner-prev {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+        }
+    </style>
 @endsection
 @push('foot')
    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
