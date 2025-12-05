@@ -106,7 +106,12 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <div class="right about-text-card" style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.06); border: 1px solid #f0f0f0;">
                         <div class="about-text-content">
-                            {!! $about->description !!}
+                            @php
+                                $description = $about->description;
+                                // Заменяем <li> на <li> с чекбоксом
+                                $description = preg_replace('/<li>/', '<li>✅ ', $description);
+                            @endphp
+                            {!! $description !!}
                         </div>
                     </div>
                 </div>
@@ -149,7 +154,7 @@
 
             #aboutUs .about-text-content ul {
                 list-style: none !important;
-                padding: 0 !important;
+                padding-left: 0 !important;
                 margin: 15px 0 !important;
             }
 
@@ -158,21 +163,7 @@
                 font-weight: 500 !important;
                 line-height: 1.7 !important;
                 margin-bottom: 12px !important;
-                padding-left: 30px !important;
-                position: relative !important;
                 list-style: none !important;
-            }
-
-            #aboutUs .about-text-content ul li::marker {
-                display: none !important;
-            }
-
-            #aboutUs .about-text-content ul li:before {
-                content: "✅" !important;
-                position: absolute !important;
-                left: 0 !important;
-                top: 0 !important;
-                font-size: 16px !important;
             }
         </style>
     </section>
