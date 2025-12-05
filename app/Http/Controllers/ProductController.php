@@ -503,7 +503,9 @@ class ProductController extends Controller
                       // Search with normalized Turkish characters
                       ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(products.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"])
                       ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(products.desc, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"])
-                      ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(categories.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"]);
+                      ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(categories.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"])
+                      // Search brands with normalized Turkish characters (firat -> Fırat)
+                      ->orWhereRaw("REPLACE(REPLACE(LOWER(JSON_EXTRACT(brands.title, '$.{$locale}')), 'ı', 'i'), 'i̇', 'i') LIKE ?", ["%{$searchNormalized}%"]);
 
                 // Special case: if searching for "firat" or "fırat", also include categories 80 (PPRC) and 121 (Dubleks PVC)
                 if (stripos($searchNormalized, 'firat') !== false) {
