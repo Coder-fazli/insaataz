@@ -262,9 +262,9 @@
                 <!--<p>{{__('site.cert_desc')}}</p>-->
             </div>
         </div>
-        <video style="max-width: 100%" width="100%" height="auto" controls>
+        <video style="max-width: 100%" width="100%" height="auto" controls preload="metadata" loading="lazy">
             <source src="{{asset('storage/videos/video-qazanxana.mp4')}}" type="video/mp4">
-        </video> 
+        </video>
         </div>
     </div>
       <div class="videos">
@@ -275,9 +275,9 @@
                 <!--<p>{{__('site.cert_desc')}}</p>-->
             </div>
         </div>
-        <video style="max-width: 100%" width="100%" height="auto" controls>
+        <video style="max-width: 100%" width="100%" height="auto" controls preload="metadata" loading="lazy">
             <source src="{{asset('storage/videos/video-radio.mp4')}}" type="video/mp4">
-        </video> 
+        </video>
         </div>
     </div>
     </div>
