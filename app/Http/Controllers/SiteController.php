@@ -83,7 +83,17 @@ class SiteController extends Controller
                 ->get();
         });
 
-        $partners = Partner::all();
+        // Load partners from database
+        $dbPartners = Partner::all();
+
+        // Load static partners from config file
+        $staticPartnersConfig = config('static-partners.partners', []);
+        $staticPartners = collect($staticPartnersConfig)->map(function($partner) {
+            return (object) $partner;
+        });
+
+        // Merge database and static partners
+        $partners = $dbPartners->merge($staticPartners);
 
         return view('site.home', [
             'chosenProducts' => $chosenProducts,
@@ -126,7 +136,19 @@ class SiteController extends Controller
     {
         $about = $this->aboutRepository->first();
         $certificates = Certificate::all();
-        $partners = Partner::all();
+
+        // Load partners from database
+        $dbPartners = Partner::all();
+
+        // Load static partners from config file
+        $staticPartnersConfig = config('static-partners.partners', []);
+        $staticPartners = collect($staticPartnersConfig)->map(function($partner) {
+            return (object) $partner;
+        });
+
+        // Merge database and static partners
+        $partners = $dbPartners->merge($staticPartners);
+
         return view('site.about', compact('about', 'certificates', 'partners'));
     }
 
