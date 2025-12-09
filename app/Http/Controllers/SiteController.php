@@ -83,17 +83,20 @@ class SiteController extends Controller
                 ->get();
         });
 
-        // Load partners from database
-        $dbPartners = Partner::all();
+        // Get partners from database
+        $partners = Partner::all();
 
-        // Load static partners from config file
-        $staticPartnersConfig = config('static-partners.partners', []);
-        $staticPartners = collect($staticPartnersConfig)->map(function($partner) {
-            return (object) $partner;
-        });
+        // Add static partners (file-based, no database needed)
+        $staticPartners = [
+            (object)['title' => 'Apamet Boyler', 'image' => 'partners/apamet-logo.webp', 'slug' => 'apamet-boyler'],
+            (object)['title' => 'Giacomini', 'image' => 'partners/giacomini-logo.png', 'slug' => 'giacomini'],
+            (object)['title' => 'SIRA Industrie', 'image' => 'partners/sira-industrie-logo.png', 'slug' => 'sira-industrie'],
+            (object)['title' => 'General Fittings', 'image' => 'partners/general-fittings-logo.jpg', 'slug' => 'general-fittings'],
+            (object)['title' => 'ETS VANA', 'image' => 'partners/ets-vana-logo.jpg', 'slug' => 'ets-vana'],
+        ];
 
-        // Merge database and static partners
-        $partners = $dbPartners->merge($staticPartners);
+        // Merge with database partners
+        $partners = $partners->merge($staticPartners);
 
         return view('site.home', [
             'chosenProducts' => $chosenProducts,
@@ -137,17 +140,20 @@ class SiteController extends Controller
         $about = $this->aboutRepository->first();
         $certificates = Certificate::all();
 
-        // Load partners from database
-        $dbPartners = Partner::all();
+        // Get partners from database
+        $partners = Partner::all();
 
-        // Load static partners from config file
-        $staticPartnersConfig = config('static-partners.partners', []);
-        $staticPartners = collect($staticPartnersConfig)->map(function($partner) {
-            return (object) $partner;
-        });
+        // Add static partners (file-based, no database needed)
+        $staticPartners = [
+            (object)['title' => 'Apamet Boyler', 'image' => 'partners/apamet-logo.webp', 'slug' => 'apamet-boyler'],
+            (object)['title' => 'Giacomini', 'image' => 'partners/giacomini-logo.png', 'slug' => 'giacomini'],
+            (object)['title' => 'SIRA Industrie', 'image' => 'partners/sira-industrie-logo.png', 'slug' => 'sira-industrie'],
+            (object)['title' => 'General Fittings', 'image' => 'partners/general-fittings-logo.jpg', 'slug' => 'general-fittings'],
+            (object)['title' => 'ETS VANA', 'image' => 'partners/ets-vana-logo.jpg', 'slug' => 'ets-vana'],
+        ];
 
-        // Merge database and static partners
-        $partners = $dbPartners->merge($staticPartners);
+        // Merge with database partners
+        $partners = $partners->merge($staticPartners);
 
         return view('site.about', compact('about', 'certificates', 'partners'));
     }
