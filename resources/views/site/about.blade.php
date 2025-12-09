@@ -38,36 +38,6 @@
             color: #08C;
             font-size: 2.5rem;
         }
-        #partners .margin-0 {
-            margin-left: 0;
-            margin-right: 0;
-        }
-        #partners .pl-0 {
-            padding: 0 10px 10px 0;
-        }
-        #partners a {
-            font: 14px ProximaNovaRegular;
-            font-weight: 400;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: normal;
-            letter-spacing: normal;
-            color: #3b3b3b;
-        }
-        #partners .partner-item {
-            height: 187px;
-            width: 100%;
-            background-color: #f0f0f0;
-            padding: 30px;
-        }
-        #partners .partner-item:hover {
-            border: 2px solid #cfd8dc;
-        }
-        #partners .partner-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
 
         .videos_container{
            display: flex;
@@ -206,52 +176,6 @@
     </section>
     <!-- Certificate section end -->
     <!-- ================================= -->
-    <!-- Partner section start -->
-    
-    <section id="certificate">
-        <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-12" >
-                    <div class="center">
-                        <h2>{{__('site.partner_title')}}</h2>
-                        <!--<p>{{__('site.cert_desc')}}</p>-->
-                    </div>
-                </div>
-                <div class="col-12" style="display:flex; align-items:center;gap:20px;">
-                      <div class="partner-next" style="cursor:pointer;"><i class="fa-solid fa-chevron-left"></i></div>
-                    <div class="swiper partners__slider" >
-                      
-                        <div class="swiper-wrapper">
-                          @foreach($partners as $value)
-                            @if(!empty($value->slug))
-                                @php
-                                    $slug = $value->slug;
-                                    $target_blank = 'target="_blank"';
-                                @endphp
-                            @else
-                                @php
-                                    $slug = 'javascript:void(0)';
-                                    $target_blank = '';
-                                @endphp
-                            @endif
-                            <div class="swiper-slide">
-                                <a href="{{$slug}}" {{$target_blank}} class="w-100">
-                                    <img src="{{asset('storage/'.$value->image)}}" alt="{{$value->title}}">
-                                </a>
-                            </div>
-                          @endforeach
-                          
-                        </div>
-                        
-                        
-                        
-                      </div>
-                      
-                      <div class="partner-prev" style="cursor:pointer;"><i class="fa-solid fa-chevron-right"></i></div>
-                </div>
-            </div>
-        </div>
-    </section>
     
     <div class="videos_container">
         <div class="videos">
@@ -276,9 +200,6 @@
         </div>
     </div>
 
-    <!-- Partner section end -->
-    <!-- ================================= -->
-
     <style>
         /* Минималистичные улучшения для всей страницы */
 
@@ -297,7 +218,7 @@
         }
 
         /* Кнопки навигации слайдера */
-        .swiper-next, .swiper-prev, .partner-next, .partner-prev {
+        .swiper-next, .swiper-prev {
             width: 45px;
             height: 45px;
             background: #fff;
@@ -310,7 +231,7 @@
             color: #2b5797;
         }
 
-        .swiper-next:hover, .swiper-prev:hover, .partner-next:hover, .partner-prev:hover {
+        .swiper-next:hover, .swiper-prev:hover {
             background: #2b5797;
             color: #fff;
             transform: scale(1.1);
@@ -383,7 +304,7 @@
                 padding: 40px 0;
             }
 
-            .swiper-next, .swiper-prev, .partner-next, .partner-prev {
+            .swiper-next, .swiper-prev {
                 width: 35px;
                 height: 35px;
                 font-size: 14px;
