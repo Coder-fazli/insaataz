@@ -87,16 +87,33 @@ class SiteController extends Controller
         $partners = Partner::all();
 
         // Add static partners (file-based, no database needed)
-        $staticPartners = [
-            (object)['title' => 'Apamet Boyler', 'image' => 'partners/apamet-logo.webp', 'slug' => 'apamet-boyler'],
-            (object)['title' => 'Giacomini', 'image' => 'partners/giacomini-logo.png', 'slug' => 'giacomini'],
-            (object)['title' => 'SIRA Industrie', 'image' => 'partners/sira-industrie-logo.png', 'slug' => 'sira-industrie'],
-            (object)['title' => 'General Fittings', 'image' => 'partners/general-fittings-logo.jpg', 'slug' => 'general-fittings'],
-            (object)['title' => 'ETS VANA', 'image' => 'partners/ets-vana-logo.jpg', 'slug' => 'ets-vana'],
-        ];
+        $partner1 = new \stdClass();
+        $partner1->title = 'Apamet Boyler';
+        $partner1->image = 'partners/apamet-logo.webp';
+        $partner1->slug = 'apamet-boyler';
+
+        $partner2 = new \stdClass();
+        $partner2->title = 'Giacomini';
+        $partner2->image = 'partners/giacomini-logo.png';
+        $partner2->slug = 'giacomini';
+
+        $partner3 = new \stdClass();
+        $partner3->title = 'SIRA Industrie';
+        $partner3->image = 'partners/sira-industrie-logo.png';
+        $partner3->slug = 'sira-industrie';
+
+        $partner4 = new \stdClass();
+        $partner4->title = 'General Fittings';
+        $partner4->image = 'partners/general-fittings-logo.jpg';
+        $partner4->slug = 'general-fittings';
+
+        $partner5 = new \stdClass();
+        $partner5->title = 'ETS VANA';
+        $partner5->image = 'partners/ets-vana-logo.jpg';
+        $partner5->slug = 'ets-vana';
 
         // Merge with database partners
-        $partners = $partners->merge($staticPartners);
+        $partners = $partners->concat([$partner1, $partner2, $partner3, $partner4, $partner5]);
 
         return view('site.home', [
             'chosenProducts' => $chosenProducts,
@@ -144,16 +161,33 @@ class SiteController extends Controller
         $partners = Partner::all();
 
         // Add static partners (file-based, no database needed)
-        $staticPartners = [
-            (object)['title' => 'Apamet Boyler', 'image' => 'partners/apamet-logo.webp', 'slug' => 'apamet-boyler'],
-            (object)['title' => 'Giacomini', 'image' => 'partners/giacomini-logo.png', 'slug' => 'giacomini'],
-            (object)['title' => 'SIRA Industrie', 'image' => 'partners/sira-industrie-logo.png', 'slug' => 'sira-industrie'],
-            (object)['title' => 'General Fittings', 'image' => 'partners/general-fittings-logo.jpg', 'slug' => 'general-fittings'],
-            (object)['title' => 'ETS VANA', 'image' => 'partners/ets-vana-logo.jpg', 'slug' => 'ets-vana'],
-        ];
+        $partner1 = new \stdClass();
+        $partner1->title = 'Apamet Boyler';
+        $partner1->image = 'partners/apamet-logo.webp';
+        $partner1->slug = 'apamet-boyler';
+
+        $partner2 = new \stdClass();
+        $partner2->title = 'Giacomini';
+        $partner2->image = 'partners/giacomini-logo.png';
+        $partner2->slug = 'giacomini';
+
+        $partner3 = new \stdClass();
+        $partner3->title = 'SIRA Industrie';
+        $partner3->image = 'partners/sira-industrie-logo.png';
+        $partner3->slug = 'sira-industrie';
+
+        $partner4 = new \stdClass();
+        $partner4->title = 'General Fittings';
+        $partner4->image = 'partners/general-fittings-logo.jpg';
+        $partner4->slug = 'general-fittings';
+
+        $partner5 = new \stdClass();
+        $partner5->title = 'ETS VANA';
+        $partner5->image = 'partners/ets-vana-logo.jpg';
+        $partner5->slug = 'ets-vana';
 
         // Merge with database partners
-        $partners = $partners->merge($staticPartners);
+        $partners = $partners->concat([$partner1, $partner2, $partner3, $partner4, $partner5]);
 
         return view('site.about', compact('about', 'certificates', 'partners'));
     }
