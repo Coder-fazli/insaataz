@@ -94,22 +94,22 @@ class SiteController extends Controller
 
         $partner2 = new \stdClass();
         $partner2->title = 'Giacomini';
-        $partner2->image = 'partners/giacomini-logo.png';
+        $partner2->image = 'partners/images (1).png';
         $partner2->slug = 'giacomini';
 
         $partner3 = new \stdClass();
         $partner3->title = 'SIRA Industrie';
-        $partner3->image = 'partners/sira-industrie-logo.png';
+        $partner3->image = 'partners/images.png';
         $partner3->slug = 'sira-industrie';
 
         $partner4 = new \stdClass();
         $partner4->title = 'General Fittings';
-        $partner4->image = 'partners/general-fittings-logo.jpg';
+        $partner4->image = 'partners/WhatsApp Image 2025-12-05 at 12.38.52_70825754.jpg';
         $partner4->slug = 'general-fittings';
 
         $partner5 = new \stdClass();
         $partner5->title = 'ETS VANA';
-        $partner5->image = 'partners/ets-vana-logo.jpg';
+        $partner5->image = 'partners/WhatsApp Image 2025-12-05 at 12.38.54_ced078a2.jpg';
         $partner5->slug = 'ets-vana';
 
         // Merge with database partners
@@ -168,22 +168,22 @@ class SiteController extends Controller
 
         $partner2 = new \stdClass();
         $partner2->title = 'Giacomini';
-        $partner2->image = 'partners/giacomini-logo.png';
+        $partner2->image = 'partners/images (1).png';
         $partner2->slug = 'giacomini';
 
         $partner3 = new \stdClass();
         $partner3->title = 'SIRA Industrie';
-        $partner3->image = 'partners/sira-industrie-logo.png';
+        $partner3->image = 'partners/images.png';
         $partner3->slug = 'sira-industrie';
 
         $partner4 = new \stdClass();
         $partner4->title = 'General Fittings';
-        $partner4->image = 'partners/general-fittings-logo.jpg';
+        $partner4->image = 'partners/WhatsApp Image 2025-12-05 at 12.38.52_70825754.jpg';
         $partner4->slug = 'general-fittings';
 
         $partner5 = new \stdClass();
         $partner5->title = 'ETS VANA';
-        $partner5->image = 'partners/ets-vana-logo.jpg';
+        $partner5->image = 'partners/WhatsApp Image 2025-12-05 at 12.38.54_ced078a2.jpg';
         $partner5->slug = 'ets-vana';
 
         // Merge with database partners
