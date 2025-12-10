@@ -177,7 +177,6 @@
     <!-- Certificate section end -->
     <!-- ================================= -->
     
-    @if($videos->count() > 0)
     <div class="videos_container">
         <div class="container">
             <div class="col-12">
@@ -185,17 +184,32 @@
                     <h2>Mediada biz</h2>
                 </div>
             </div>
-            @foreach($videos as $video)
-            <div class="videos">
-                <video controls preload="metadata" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                    <source src="{{ $video->file->url('original') }}" type="video/mp4">
-                    Brauzeriniz video əlavəsini dəstəkləmir.
-                </video>
-            </div>
-            @endforeach
+            @if($videos->count() > 0)
+                @foreach($videos as $video)
+                <div class="videos">
+                    <video controls preload="metadata" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <source src="{{ $video->file->url('original') }}" type="video/mp4">
+                        Brauzeriniz video əlavəsini dəstəkləmir.
+                    </video>
+                </div>
+                @endforeach
+            @else
+                <div class="videos">
+                    <div class="youtube-video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <iframe
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                            src="https://www.youtube.com/embed/qTKguKditog"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
-    @endif
 
     <style>
         /* Минималистичные улучшения для всей страницы */
