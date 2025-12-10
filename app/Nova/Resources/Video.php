@@ -48,8 +48,6 @@ class Video extends Resource
     {
         return trans('Video');
     }
-    
-    public static $displayInNavigation = false;
 
     public static function label(): string
     {
