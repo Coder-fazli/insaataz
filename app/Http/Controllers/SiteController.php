@@ -20,6 +20,7 @@ use App\Models\Partner;
 use App\Models\Blog;
 use App\Models\Portfolio;
 use App\Models\Settings;
+use App\Models\Video;
 use App\Enum\Status;
 use Illuminate\Support\Facades\Cache;
 
@@ -156,6 +157,7 @@ class SiteController extends Controller
     {
         $about = $this->aboutRepository->first();
         $certificates = Certificate::all();
+        $videos = Video::latest()->limit(2)->get();
 
         // Get partners from database
         $partners = Partner::all();
@@ -189,7 +191,7 @@ class SiteController extends Controller
         // Merge with database partners
         $partners = $partners->concat([$partner1, $partner2, $partner3, $partner4, $partner5]);
 
-        return view('site.about', compact('about', 'certificates', 'partners'));
+        return view('site.about', compact('about', 'certificates', 'partners', 'videos'));
     }
 
     public function addToCart()
