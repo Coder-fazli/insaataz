@@ -66,21 +66,38 @@
             font-family: 'Roboto', sans-serif;
             border: none;
             outline: none;
-            overflow: hidden;
+            overflow: visible;
             position: fixed;
         }
 
         .whatsapp-float-btn::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            animation: cornerPulse 2.5s ease-in-out infinite;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 144, 226, 0.6);
+            border-radius: 30px;
+            transform: translate(-50%, -50%);
+            animation: spreadPulse 2s ease-out infinite;
             pointer-events: none;
+            z-index: -1;
+        }
+
+        .whatsapp-float-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 144, 226, 0.4);
+            border-radius: 30px;
+            transform: translate(-50%, -50%);
+            animation: spreadPulse 2s ease-out infinite 1s;
+            pointer-events: none;
+            z-index: -1;
         }
 
         .whatsapp-float-btn:hover {
@@ -95,21 +112,25 @@
             width: 20px;
             height: 20px;
             flex-shrink: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .whatsapp-float-btn span {
             letter-spacing: 0.2px;
             white-space: nowrap;
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes cornerPulse {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0.8);
+        @keyframes spreadPulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
             }
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
+            100% {
+                transform: translate(-50%, -50%) scale(1.8);
+                opacity: 0;
             }
         }
 
