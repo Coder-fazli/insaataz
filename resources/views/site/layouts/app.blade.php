@@ -77,10 +77,10 @@
             left: 50%;
             width: 100%;
             height: 100%;
-            background: rgba(74, 144, 226, 0.4);
+            background: rgba(74, 144, 226, 0.25);
             border-radius: 30px;
             transform: translate(-50%, -50%);
-            animation: spreadPulse 2.5s ease-out infinite;
+            animation: spreadPulse 3s ease-out infinite;
             pointer-events: none;
             z-index: -1;
         }
@@ -92,10 +92,10 @@
             left: 50%;
             width: 100%;
             height: 100%;
-            background: rgba(74, 144, 226, 0.25);
+            background: rgba(74, 144, 226, 0.15);
             border-radius: 30px;
             transform: translate(-50%, -50%);
-            animation: spreadPulse 2.5s ease-out infinite 1.25s;
+            animation: spreadPulse 3s ease-out infinite 1.5s;
             pointer-events: none;
             z-index: -1;
         }
@@ -126,10 +126,10 @@
         @keyframes spreadPulse {
             0% {
                 transform: translate(-50%, -50%) scale(1);
-                opacity: 0.5;
+                opacity: 0.3;
             }
             100% {
-                transform: translate(-50%, -50%) scale(1.3);
+                transform: translate(-50%, -50%) scale(1.15);
                 opacity: 0;
             }
         }
