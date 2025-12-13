@@ -118,12 +118,31 @@
                     </form>
                 </div>
                 <!-- End .header-search -->
-                <div class="header-contact d-none d-lg-flex pl-4 pr-4">
-                    <img alt="phone" src="/webcoder/assets/images/phone.png" width="30" height="30" class="pb-1">
-                    <h6><span>{{__('site.call_us')}}</span><a href="tel:+994102900101"
-                                                   class="text-dark font1">+994 10 290 01 01</a>
-                    </h6>
-                </div>
+                <a href="tel:+994102900101" class="header-contact-button d-none d-lg-flex" style="text-decoration: none; background: #f5f5f5; border-radius: 50px; padding: 12px 25px 12px 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; align-items: center; gap: 15px;">
+                    <div class="phone-icon-circle" style="background: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: all 0.3s ease;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 24px; height: 24px; fill: #4A90E2; transition: all 0.3s ease;">
+                            <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+                        </svg>
+                    </div>
+                    <div style="display: flex; flex-direction: column; line-height: 1.3;">
+                        <span style="color: #999; font-size: 12px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px;">Bizə indi zəng edin</span>
+                        <span style="color: #333; font-size: 16px; font-weight: 700; white-space: nowrap;">+994 10 290 01 01</span>
+                    </div>
+                </a>
+                <style>
+                    .header-contact-button:hover {
+                        background: #e8e8e8 !important;
+                        transform: translateY(-2px);
+                        box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+                    }
+                    .header-contact-button:hover .phone-icon-circle {
+                        background: #4A90E2 !important;
+                        transform: scale(1.05);
+                    }
+                    .header-contact-button:hover .phone-icon-circle svg {
+                        fill: white !important;
+                    }
+                </style>
                 <div class="dropdown cart-dropdown">
                     <a href="{{route('cart')}}" title="Cart" class="dropdown-toggle dropdown-arrow cart-toggle"
                        role="button"
