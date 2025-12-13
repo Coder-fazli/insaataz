@@ -43,6 +43,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/webcoder/assets/vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .whatsapp-float-btn {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            color: white;
+            text-decoration: none;
+        }
+
+        .whatsapp-float-btn i {
+            font-size: 20px;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float-btn {
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .whatsapp-float-btn i {
+                font-size: 18px;
+            }
+        }
+    </style>
+
     @stack('head')
 </head>
 
@@ -58,6 +117,12 @@
     <x-footer/>
 </div>
 <!-- End .page-wrapper -->
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/0102900101" target="_blank" class="whatsapp-float-btn">
+    <i class="fab fa-whatsapp"></i>
+    <span>Teklif al</span>
+</a>
 
 {{--<div class="loading-overlay">--}}
 {{--    <div class="bounce-loader">--}}
