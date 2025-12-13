@@ -104,8 +104,21 @@
             transform: translateY(-50%);
             box-shadow: 0 6px 20px rgba(74, 144, 226, 0.45);
             background: #5BA3F5;
-            color: white;
+            color: white !important;
             text-decoration: none;
+        }
+
+        .whatsapp-float-btn:visited,
+        .whatsapp-float-btn:active,
+        .whatsapp-float-btn:focus {
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .whatsapp-float-btn:visited span,
+        .whatsapp-float-btn:active span,
+        .whatsapp-float-btn:focus span {
+            color: white !important;
         }
 
         .whatsapp-float-btn svg {
