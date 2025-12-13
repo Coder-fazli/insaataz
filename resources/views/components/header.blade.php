@@ -19,12 +19,12 @@
             <div class="header-right header-dropdowns  ml-sm-auto ">
                 <div>
                     {{--                    <a href="#">Links</a>--}}
-                    <div class="header-menu">
+                    <div class="header-menu" style="display: none;">
                         <ul>
                             {{--                            <li><a href="">About Us</a></li>--}}
                             {{--                            <li><a href="">Blog</a></li>--}}
                             <!--<li><a href="{{route('cart')}}">{{__('site.cart')}}</a></li>-->
-                            
+
                             @auth('client')
                                 <a href="{{route('profile.wishList')}}"><i class="fas fa-heart"></i></a>
                                 <a href="{{route('profile.compare')}}" class="compare_a_tag">
@@ -120,8 +120,8 @@
                 <!-- End .header-search -->
                 <div class="header-contact d-none d-lg-flex pl-4 pr-4">
                     <img alt="phone" src="/webcoder/assets/images/phone.png" width="30" height="30" class="pb-1">
-                    <h6><span>{{__('site.call_us')}}</span><a href="tel:{{$settings->phone[0]['attributes']['phone']}}"
-                                                   class="text-dark font1">{{$settings->phone[0]['attributes']['phone']}}</a>
+                    <h6><span>{{__('site.call_us')}}</span><a href="tel:+994102900101"
+                                                   class="text-dark font1">+994 10 290 01 01</a>
                     </h6>
                 </div>
                 <div class="dropdown cart-dropdown">

@@ -46,9 +46,9 @@
                 <h5 class="text-white mb-3 footer-heading">Əlaqə</h5>
                 <div class="footer-contact mb-2">
                     <p class="text-white-50 mb-1" style="font-size: 13px;">Bizə indi zəng edin</p>
-                    <a href="tel:{{$settings->phone[0]['attributes']['phone']}}" class="text-white footer-phone" style="font-size: 16px; font-weight: 600; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 8px;">
+                    <a href="tel:+994102900101" class="text-white footer-phone" style="font-size: 16px; font-weight: 600; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 8px;">
                         <i class="fas fa-phone" style="font-size: 14px;"></i>
-                        <span>{{$settings->phone[0]['attributes']['phone']}}</span>
+                        <span>+994 10 290 01 01</span>
                     </a>
                 </div>
                 <div class="footer-address mt-2">
