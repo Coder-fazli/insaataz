@@ -50,48 +50,48 @@
                     </form>
                 </div>
 
-                <!-- Map Section -->
-                <div class="map-section">
-                    <div class="map" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08); height: 100%;">
-                        <iframe src="{{$settings->map}}" width="100%" height="600" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!-- Contact Info Section -->
+                <div class="contact-info-section">
+                    <div class="contact-info-modern" style="max-width: 100%;">
+                        <ul style="display: flex; flex-direction: column; gap: 40px;">
+                            <li class="contact-info-item">
+                                <span class="contact-info-label">{{__('site.address')}}</span>
+                                <div class="contact-info-value">{{$settings->address}}</div>
+                            </li>
+                            <li class="contact-info-item">
+                                <span class="contact-info-label">{{__('site.phone_number')}}</span>
+                                <div class="contact-info-value">
+                                    @php
+                                        $phoneData = $settings->phone;
+                                        $emailData = $settings->email;
+                                    @endphp
+                                    @if (!empty($phoneData))
+                                       @foreach ($phoneData as $phone)
+                                           <a href="tel:{{ $phone['attributes']['phone'] }}">{{ $phone['attributes']['phone'] }}</a><br>
+                                       @endforeach
+                                    @endif
+                                </div>
+                            </li>
+                            <li class="contact-info-item">
+                                <span class="contact-info-label">{{__('site.email')}}</span>
+                                <div class="contact-info-value">
+                                    @if (!empty($emailData))
+                                       @foreach ($emailData as $email)
+                                           <a href="mailto:{{ $email['attributes']['email'] }}">{{ $email['attributes']['email'] }}</a><br>
+                                       @endforeach
+                                    @endif
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Contact Info Section Below -->
-            <div class="contact-info-section" style="margin-top: 60px;">
-                <div class="contact-info-modern" style="max-width: 100%;">
-                    <ul style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
-                        <li class="contact-info-item">
-                            <span class="contact-info-label">{{__('site.address')}}</span>
-                            <div class="contact-info-value">{{$settings->address}}</div>
-                        </li>
-                        <li class="contact-info-item">
-                            <span class="contact-info-label">{{__('site.phone_number')}}</span>
-                            <div class="contact-info-value">
-                                @php
-                                    $phoneData = $settings->phone;
-                                    $emailData = $settings->email;
-                                @endphp
-                                @if (!empty($phoneData))
-                                   @foreach ($phoneData as $phone)
-                                       <a href="tel:{{ $phone['attributes']['phone'] }}">{{ $phone['attributes']['phone'] }}</a><br>
-                                   @endforeach
-                                @endif
-                            </div>
-                        </li>
-                        <li class="contact-info-item">
-                            <span class="contact-info-label">{{__('site.email')}}</span>
-                            <div class="contact-info-value">
-                                @if (!empty($emailData))
-                                   @foreach ($emailData as $email)
-                                       <a href="mailto:{{ $email['attributes']['email'] }}">{{ $email['attributes']['email'] }}</a><br>
-                                   @endforeach
-                                @endif
-                            </div>
-                        </li>
-                    </ul>
+            <!-- Map Section Below -->
+            <div class="map-section" style="margin-top: 60px;">
+                <div class="map" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                    <iframe src="{{$settings->map}}" width="100%" height="600" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
