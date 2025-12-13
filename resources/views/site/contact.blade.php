@@ -8,11 +8,11 @@
 
 <main>
     
-    <section>
+    <section style="padding: 60px 0; background: #f8f9fa;">
         <div class="container">
             <!--<h2>{{__('site.contact')}}</h2>-->
-            
-            <div class="contact-information-container">
+
+            <div class="contact-information-container" style="display: block; max-width: 100%;">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -54,9 +54,11 @@
                 <style>
                     .modern-contact-form {
                         background: white;
-                        padding: 40px;
-                        border-radius: 16px;
-                        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+                        padding: 50px;
+                        border-radius: 20px;
+                        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                        max-width: 900px;
+                        margin: 0 auto 40px;
                     }
                     .form-row {
                         display: grid;
@@ -142,36 +144,90 @@
                             padding: 14px 30px;
                         }
                     }
+                    .contact-info-modern {
+                        background: white;
+                        padding: 40px;
+                        border-radius: 20px;
+                        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                        max-width: 900px;
+                        margin: 0 auto 40px;
+                    }
+                    .contact-info-modern ul {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                        gap: 30px;
+                    }
+                    .contact-info-modern li {
+                        border: none !important;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                    }
+                    .contact-info-item {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                    .contact-info-label {
+                        color: #999;
+                        font-size: 13px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                    .contact-info-value {
+                        color: #333;
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 1.6;
+                    }
+                    .contact-info-value a {
+                        color: #4A90E2;
+                        text-decoration: none;
+                        transition: color 0.3s ease;
+                    }
+                    .contact-info-value a:hover {
+                        color: #357ABD;
+                    }
                 </style>
-                <div class="contact-information">
+                <div class="contact-information contact-info-modern">
                     <ul>
-                        <li><span class="contact-information__individual">{{__('site.address')}}</span> {{$settings->address}}</li>
-                        <li>
-                            <span class="contact-information__individual">{{__('site.phone_number')}}</span>
-                            @php
-                                $phoneData = $settings->phone;
-                                $emailData = $settings->email;
-                            @endphp
-                            @if (!empty($phoneData))
-                               @foreach ($phoneData as $phone)
-                                   <a href="tel:{{ $phone['attributes']['phone'] }}">{{ $phone['attributes']['phone'] }}</a>
-                               @endforeach
-                            @endif
+                        <li class="contact-info-item">
+                            <span class="contact-info-label">{{__('site.address')}}</span>
+                            <div class="contact-info-value">{{$settings->address}}</div>
                         </li>
-                        <li>
-                            <span class="contact-information__individual">{{__('site.email')}} </span> 
-                            @if (!empty($emailData))
-                               @foreach ($emailData as $email)
-                                   <a href="mailto:{{ $email['attributes']['email'] }}">{{ $email['attributes']['email'] }}</a>
-                               @endforeach
-                            @endif
+                        <li class="contact-info-item">
+                            <span class="contact-info-label">{{__('site.phone_number')}}</span>
+                            <div class="contact-info-value">
+                                @php
+                                    $phoneData = $settings->phone;
+                                    $emailData = $settings->email;
+                                @endphp
+                                @if (!empty($phoneData))
+                                   @foreach ($phoneData as $phone)
+                                       <a href="tel:{{ $phone['attributes']['phone'] }}">{{ $phone['attributes']['phone'] }}</a><br>
+                                   @endforeach
+                                @endif
+                            </div>
+                        </li>
+                        <li class="contact-info-item">
+                            <span class="contact-info-label">{{__('site.email')}}</span>
+                            <div class="contact-info-value">
+                                @if (!empty($emailData))
+                                   @foreach ($emailData as $email)
+                                       <a href="mailto:{{ $email['attributes']['email'] }}">{{ $email['attributes']['email'] }}</a><br>
+                                   @endforeach
+                                @endif
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div>
-                <div class="map">
-                    <iframe src="{{$settings->map}}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="map" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+                    <iframe src="{{$settings->map}}" width="100%" height="450" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
