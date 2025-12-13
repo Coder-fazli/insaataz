@@ -14,4 +14,6 @@
                            target="_blank"></a>
 
                     @endif
+                    <a href="https://www.tiktok.com/@orelinsaat?_r=1&_t=ZS-926NHQsFEgr" class="social-icon social-tiktok fab fa-tiktok"
+                       target="_blank" title="TikTok"></a>
                 </div>
