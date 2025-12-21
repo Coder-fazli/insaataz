@@ -98,9 +98,15 @@
                         order: 3 !important;
                         margin-left: auto !important;
                         margin-right: 0 !important;
+                        font-size: 24px;
+                        padding: 8px 12px;
+                    }
+                    .mobile-menu-toggler i {
+                        font-size: 26px;
                     }
                     .header-left {
                         order: 1 !important;
+                        margin-left: -39px;
                     }
                     .header-right {
                         order: 2 !important;
