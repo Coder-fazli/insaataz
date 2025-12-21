@@ -512,6 +512,19 @@ class ProductController extends Controller
                     $query->orWhereIn('products.category_id', [80, 121]);
                 }
             })
+            // Special ordering for "radiator" search: prioritize Dekorativ Radiatorlar (95) over Radiator Ventilləri (110)
+            ->when(stripos(mb_strtolower($search), 'radiator') !== false, function($query) {
+                $query->orderByRaw("
+                    CASE
+                        WHEN products.category_id = 95 THEN 1
+                        WHEN products.category_id = 89 THEN 2
+                        WHEN products.category_id = 94 THEN 3
+                        WHEN products.category_id = 88 THEN 4
+                        WHEN products.category_id = 110 THEN 5
+                        ELSE 6
+                    END
+                ");
+            })
             ->orderByRaw("
                 CASE
                     WHEN LOWER(JSON_EXTRACT(brands.title, '$.{$locale}')) LIKE LOWER(?) THEN 1
