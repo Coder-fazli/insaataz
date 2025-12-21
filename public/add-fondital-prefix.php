@@ -14,21 +14,17 @@ echo "<p>Category: Dekorativ Radiatorlar (ID: 96)</p>";
 
 // Prefixes to search for
 $prefixes = ['Garda', 'Mood', 'Tribeca', 'Arte', 'Alüminium'];
-$categoryId = 96; // Dekorativ Radiatorlar
+$categoryId = 95; // Dekorativ Radiatorlar
 
 $totalUpdated = 0;
 
 foreach ($prefixes as $prefix) {
     echo "<h3>Processing titles starting with '{$prefix}':</h3>";
 
-    // Get products from category 95 where title starts with this prefix (in any language)
+    // Get products from category where title contains this prefix
     $products = DB::table('products')
         ->where('category_id', $categoryId)
-        ->where(function($query) use ($prefix) {
-            $query->whereRaw("JSON_EXTRACT(title, '$.az') LIKE ?", ["{$prefix}%"])
-                  ->orWhereRaw("JSON_EXTRACT(title, '$.en') LIKE ?", ["{$prefix}%"])
-                  ->orWhereRaw("JSON_EXTRACT(title, '$.ru') LIKE ?", ["{$prefix}%"]);
-        })
+        ->whereRaw("title LIKE ?", ["%\"{$prefix}%"])
         ->get();
 
     if ($products->isEmpty()) {
