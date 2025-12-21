@@ -46,6 +46,7 @@ class Partner extends Resource
             ID::make()->sortable(),
             Text::make('Title')->rules(['required']),
             Text::make('Slug')->nullable(),
+            Text::make('Link')->nullable()->help('Website URL (e.g. https://example.com)'),
             // Image::make('Image')->creationRules(['required','mimes:jpeg,jpg,png'])->path('partners')
             //     ->updateRules(['mimes:jpeg,jpg,png']),
             File::make('Image')
