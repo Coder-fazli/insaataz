@@ -1,5 +1,5 @@
 <?php
-// Check products in Dekorativ Radiatorlar category
+// Check products with Garda, Mood, etc in title
 require __DIR__ . '/../vendor/autoload.php';
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
@@ -7,15 +7,22 @@ $kernel->bootstrap();
 
 use Illuminate\Support\Facades\DB;
 
-echo "<h2>Products in Category 95 (Dekorativ Radiatorlar):</h2>";
+echo "<h2>Searching for products with Garda, Mood, Tribeca, Arte, Aluminium in title:</h2>";
 
-$products = DB::table('products')->where('category_id', 95)->get();
+$products = DB::table('products')
+    ->where(function($q) {
+        $q->whereRaw("title LIKE '%Garda%'")
+          ->orWhereRaw("title LIKE '%Mood%'")
+          ->orWhereRaw("title LIKE '%Tribeca%'")
+          ->orWhereRaw("title LIKE '%Arte%'")
+          ->orWhereRaw("title LIKE '%lüminium%'");
+    })
+    ->get();
 
-echo "<p>Total products: " . count($products) . "</p>";
+echo "<p>Total found: " . count($products) . "</p>";
 
 echo "<table border='1' cellpadding='10'>";
-echo "<tr><th>ID</th><th>Title (raw JSON)</th><th>Category ID</th></tr>";
-
+echo "<tr><th>ID</th><th>Title</th><th>Category ID</th></tr>";
 foreach ($products as $p) {
     echo "<tr>";
     echo "<td>{$p->id}</td>";
@@ -25,10 +32,9 @@ foreach ($products as $p) {
 }
 echo "</table>";
 
-// Also show all categories with "radiator" in name
-echo "<h2>Categories with 'radiator' in name:</h2>";
+echo "<h2>All categories with 'dekorativ' or 'radiator':</h2>";
 $categories = DB::table('categories')
-    ->whereRaw("LOWER(title) LIKE '%radiator%'")
+    ->whereRaw("LOWER(title) LIKE '%dekorativ%' OR LOWER(title) LIKE '%radiator%'")
     ->get();
 
 echo "<table border='1' cellpadding='10'>";
