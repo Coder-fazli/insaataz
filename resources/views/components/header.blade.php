@@ -83,10 +83,30 @@
         <!--      </ul>-->
         <!--</div>-->
         <div class="container">
-            <button class="mobile-menu-toggler mr-2" type="button">
+            <button class="mobile-menu-toggler ml-2" type="button" style="order: 3;">
                     <i class="fas fa-bars"></i>
                     <!--{{__('site.catalogue')}}-->
             </button>
+            <style>
+                @media (max-width: 991px) {
+                    .header-middle .container {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    .mobile-menu-toggler {
+                        order: 3 !important;
+                        margin-left: auto !important;
+                        margin-right: 0 !important;
+                    }
+                    .header-left {
+                        order: 1 !important;
+                    }
+                    .header-right {
+                        order: 2 !important;
+                    }
+                }
+            </style>
             <div class="header-left col-lg-2 w-auto pl-0">
 
                 <a href="{{route('home')}}" class="logo-container {{config('app.name')}}">
