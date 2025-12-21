@@ -48,7 +48,7 @@
         .whatsapp-float-btn {
             position: fixed;
             right: 25px;
-            top: 50%;
+            top: 70%;
             transform: translateY(-50%);
             background: #4A90E2;
             color: white;
