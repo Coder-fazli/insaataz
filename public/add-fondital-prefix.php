@@ -10,11 +10,11 @@ $kernel->bootstrap();
 use Illuminate\Support\Facades\DB;
 
 echo "<h2>Adding 'Fondital' prefix to product titles...</h2>";
-echo "<p>Category: Dekorativ Radiatorlar (ID: 95)</p>";
+echo "<p>Category: Dekorativ Radiatorlar (ID: 96)</p>";
 
 // Prefixes to search for
 $prefixes = ['Garda', 'Mood', 'Tribeca', 'Arte', 'Alüminium'];
-$categoryId = 95; // Dekorativ Radiatorlar
+$categoryId = 96; // Dekorativ Radiatorlar
 
 $totalUpdated = 0;
 
