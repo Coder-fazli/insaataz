@@ -115,6 +115,10 @@
                                             $partnerLink = 'https://www.generalfittings.it/en';
                                         } elseif(str_contains(strtolower($value->image ?? ''), 'ets') || str_contains(strtolower($value->title ?? ''), 'ets')) {
                                             $partnerLink = 'https://www.etsvana.com.tr/';
+                                        } elseif(str_contains(strtolower($value->image ?? ''), 'nobili') || str_contains(strtolower($value->title ?? ''), 'nobili')) {
+                                            $partnerLink = 'https://www.nobili.it/en/';
+                                        } elseif(str_contains(strtolower($value->image ?? ''), 'carisa') || str_contains(strtolower($value->title ?? ''), 'carisa')) {
+                                            $partnerLink = 'https://carisa.com.tr/en/';
                                         }
                                     @endphp
                                     <div class="swiper-slide">
