@@ -120,15 +120,23 @@
                                         } elseif(str_contains(strtolower($value->image ?? ''), 'carisa') || str_contains(strtolower($value->title ?? ''), 'carisa')) {
                                             $partnerLink = 'https://carisa.com.tr/en/';
                                         }
+
+                                        // Determine image path - use public/partners/ for nobili/carisa, storage for others
+                                        $imagePath = asset('storage/'.$value->image);
+                                        if(str_contains(strtolower($value->image ?? ''), 'nobili')) {
+                                            $imagePath = asset('partners/nobili-logo.jpg');
+                                        } elseif(str_contains(strtolower($value->image ?? ''), 'carisa')) {
+                                            $imagePath = asset('partners/carisa-logo.png');
+                                        }
                                     @endphp
                                     <div class="swiper-slide">
                                         @if(!empty($partnerLink) && $partnerLink !== '#')
                                             <a href="{{$partnerLink}}" target="_blank" rel="noopener noreferrer">
-                                                <img src="{{asset('storage/'.$value->image)}}" alt="{{$value->title}}">
+                                                <img src="{{$imagePath}}" alt="{{$value->title}}">
                                             </a>
                                         @else
                                             <div>
-                                                <img src="{{asset('storage/'.$value->image)}}" alt="{{$value->title}}">
+                                                <img src="{{$imagePath}}" alt="{{$value->title}}">
                                             </div>
                                         @endif
                                     </div>
