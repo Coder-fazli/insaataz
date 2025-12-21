@@ -103,8 +103,8 @@
                             <div class="swiper-wrapper">
                                 @foreach($partners as $value)
                                     <div class="swiper-slide">
-                                        @if(!empty($value->slug))
-                                            <a href="{{$value->slug}}" target="_blank">
+                                        @if(!empty($value->link))
+                                            <a href="{{$value->link}}" target="_blank" rel="noopener noreferrer">
                                                 <img src="{{asset('storage/'.$value->image)}}" alt="{{$value->title}}">
                                             </a>
                                         @else
