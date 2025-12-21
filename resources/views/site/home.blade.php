@@ -102,9 +102,24 @@
                         <div class="swiper partners__slider">
                             <div class="swiper-wrapper">
                                 @foreach($partners as $value)
+                                    @php
+                                        $partnerLink = $value->link ?? $value->slug ?? '#';
+                                        // Hardcode links for specific partners
+                                        if(str_contains(strtolower($value->image ?? ''), 'apamet') || str_contains(strtolower($value->title ?? ''), 'apamet')) {
+                                            $partnerLink = 'https://www.apamet.com.tr/';
+                                        } elseif(str_contains(strtolower($value->image ?? ''), 'giacomini') || str_contains(strtolower($value->title ?? ''), 'giacomini')) {
+                                            $partnerLink = 'https://www.giacomini.com/';
+                                        } elseif(str_contains(strtolower($value->image ?? ''), 'sira') || str_contains(strtolower($value->title ?? ''), 'sira')) {
+                                            $partnerLink = 'https://www.siraindustrie.com/en-gb/';
+                                        } elseif(str_contains(strtolower($value->image ?? ''), 'general') || str_contains(strtolower($value->title ?? ''), 'general')) {
+                                            $partnerLink = 'https://www.generalfittings.it/en';
+                                        } elseif(str_contains(strtolower($value->image ?? ''), 'ets') || str_contains(strtolower($value->title ?? ''), 'ets')) {
+                                            $partnerLink = 'https://www.etsvana.com.tr/';
+                                        }
+                                    @endphp
                                     <div class="swiper-slide">
-                                        @if(!empty($value->link))
-                                            <a href="{{$value->link}}" target="_blank" rel="noopener noreferrer">
+                                        @if(!empty($partnerLink) && $partnerLink !== '#')
+                                            <a href="{{$partnerLink}}" target="_blank" rel="noopener noreferrer">
                                                 <img src="{{asset('storage/'.$value->image)}}" alt="{{$value->title}}">
                                             </a>
                                         @else
