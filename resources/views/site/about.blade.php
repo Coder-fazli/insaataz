@@ -703,28 +703,37 @@
 
     .orel-cert-slider-wrapper {
         padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .orel-cert-swiper {
+        order: 1;
+        width: 100%;
     }
 
     .orel-slider-nav {
         position: relative;
         top: auto;
         transform: none;
-        margin: 20px auto 0;
+        order: 2;
+        margin-top: 16px;
+        width: 40px;
+        height: 40px;
     }
 
     .orel-slider-nav.orel-prev {
         left: auto;
+        margin-right: 12px;
     }
 
     .orel-slider-nav.orel-next {
         right: auto;
     }
 
-    .orel-cert-nav-mobile {
-        display: flex;
-        justify-content: center;
-        gap: 16px;
-        margin-top: 24px;
+    .orel-slider-nav:hover {
+        transform: none;
     }
 }
 </style>
@@ -894,16 +903,6 @@
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
-
-        <!-- Mobile Navigation -->
-        <div class="orel-cert-nav-mobile d-block d-md-none">
-            <button class="orel-slider-nav orel-prev" id="certPrevMobile">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="orel-slider-nav orel-next" id="certNextMobile">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
     </div>
 </section>
 @endif
@@ -966,16 +965,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Manual navigation buttons
+        // Navigation buttons
         var prevBtn = document.getElementById('certPrev');
         var nextBtn = document.getElementById('certNext');
-        var prevBtnMobile = document.getElementById('certPrevMobile');
-        var nextBtnMobile = document.getElementById('certNextMobile');
 
         if (prevBtn) prevBtn.addEventListener('click', function() { certSwiper.slidePrev(); });
         if (nextBtn) nextBtn.addEventListener('click', function() { certSwiper.slideNext(); });
-        if (prevBtnMobile) prevBtnMobile.addEventListener('click', function() { certSwiper.slidePrev(); });
-        if (nextBtnMobile) nextBtnMobile.addEventListener('click', function() { certSwiper.slideNext(); });
     }
 
     // Lightbox for certificates
