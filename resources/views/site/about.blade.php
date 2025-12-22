@@ -655,6 +655,15 @@
         padding: 40px 0 80px;
     }
 
+    .orel-logo-card {
+        padding: 30px;
+        border-radius: 16px;
+    }
+
+    .orel-logo-card img {
+        max-width: 140px;
+    }
+
     .orel-feature-card {
         padding: 16px 14px;
     }
