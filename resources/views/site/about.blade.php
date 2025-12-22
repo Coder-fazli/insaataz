@@ -461,12 +461,19 @@
 .orel-cert-swiper {
     overflow: hidden;
     padding: 20px 0;
+    width: 100%;
+}
+
+.orel-cert-swiper .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
 }
 
 .orel-cert-swiper .swiper-slide {
     background: transparent;
     max-height: none;
     height: auto;
+    flex-shrink: 0;
 }
 
 .orel-cert-card {
@@ -908,18 +915,16 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Certificate Slider
-    if (document.querySelector('.orel-cert-swiper')) {
-        const certSwiper = new Swiper('.orel-cert-swiper', {
+    var certSwiperEl = document.querySelector('.orel-cert-swiper');
+    if (certSwiperEl) {
+        var certSwiper = new Swiper('.orel-cert-swiper', {
             slidesPerView: 1,
             spaceBetween: 24,
             loop: true,
+            grabCursor: true,
             autoplay: {
                 delay: 4000,
                 disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: '#certNext, #certNextMobile',
-                prevEl: '#certPrev, #certPrevMobile',
             },
             breakpoints: {
                 576: {
@@ -933,11 +938,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+
+        // Manual navigation buttons
+        var prevBtn = document.getElementById('certPrev');
+        var nextBtn = document.getElementById('certNext');
+        var prevBtnMobile = document.getElementById('certPrevMobile');
+        var nextBtnMobile = document.getElementById('certNextMobile');
+
+        if (prevBtn) prevBtn.addEventListener('click', function() { certSwiper.slidePrev(); });
+        if (nextBtn) nextBtn.addEventListener('click', function() { certSwiper.slideNext(); });
+        if (prevBtnMobile) prevBtnMobile.addEventListener('click', function() { certSwiper.slidePrev(); });
+        if (nextBtnMobile) nextBtnMobile.addEventListener('click', function() { certSwiper.slideNext(); });
     }
 
     // Lightbox for certificates
     if (document.querySelector('.gallery a')) {
-        let gallery = new SimpleLightbox('.gallery a', {
+        var gallery = new SimpleLightbox('.gallery a', {
             captionsData: 'alt',
             captionDelay: 250
         });
