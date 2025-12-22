@@ -14,7 +14,7 @@
 .orel-about-hero {
     position: relative;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0c4a6e 100%);
-    padding: 80px 0 160px;
+    padding: 60px 0 120px;
     overflow: hidden;
     font-family: 'Plus Jakarta Sans', 'Roboto', sans-serif;
 }
@@ -79,33 +79,7 @@
     font-size: 17px;
     line-height: 1.8;
     color: #94a3b8;
-    margin-bottom: 32px;
-}
-
-.orel-hero-stats-inline {
-    display: flex;
-    gap: 40px;
-}
-
-.orel-stat-inline {
-    text-align: left;
-}
-
-.orel-stat-inline .orel-number {
-    font-size: 36px;
-    font-weight: 800;
-    color: #ffffff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.orel-stat-inline .orel-number span {
-    color: #3b82f6;
-}
-
-.orel-stat-inline .orel-label {
-    font-size: 14px;
-    color: #64748b;
-    font-weight: 500;
+    margin-bottom: 0;
 }
 
 .orel-hero-visual {
@@ -143,8 +117,8 @@
 
 /* Features Section */
 .orel-features-section {
-    margin-top: -100px;
-    padding: 0 0 80px;
+    margin-top: -80px;
+    padding: 0 0 50px;
     position: relative;
     z-index: 10;
     font-family: 'Plus Jakarta Sans', 'Roboto', sans-serif;
@@ -233,7 +207,7 @@
 
 /* Content Section */
 .orel-content-section {
-    padding: 80px 0;
+    padding: 50px 0;
     background: #ffffff;
     font-family: 'Plus Jakarta Sans', 'Roboto', sans-serif;
 }
@@ -439,14 +413,14 @@
 
 /* Certificate Section - Modern */
 .orel-certificate-section {
-    padding: 80px 0;
+    padding: 50px 0;
     background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
     font-family: 'Plus Jakarta Sans', 'Roboto', sans-serif;
 }
 
 .orel-section-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .orel-section-header .orel-badge {
@@ -564,7 +538,7 @@
 
 /* Videos Section */
 .orel-videos-section {
-    padding: 80px 0;
+    padding: 50px 0;
     background: #ffffff;
     font-family: 'Plus Jakarta Sans', 'Roboto', sans-serif;
 }
@@ -619,22 +593,11 @@
 
 @media (max-width: 768px) {
     .orel-about-hero {
-        padding: 60px 0 140px;
+        padding: 50px 0 100px;
     }
 
     .orel-hero-text h1 {
         font-size: 32px;
-    }
-
-    .orel-hero-stats-inline {
-        flex-wrap: wrap;
-        gap: 24px;
-    }
-
-    .orel-stat-inline {
-        text-align: center;
-        flex: 1;
-        min-width: 100px;
     }
 
     .orel-features-grid {
@@ -642,7 +605,12 @@
     }
 
     .orel-features-section {
-        margin-top: -80px;
+        margin-top: -60px;
+        padding-bottom: 30px;
+    }
+
+    .orel-content-section {
+        padding: 30px 0;
     }
 
     .orel-content-text h2 {
@@ -657,6 +625,10 @@
         font-size: 28px;
     }
 
+    .orel-certificate-section {
+        padding: 30px 0;
+    }
+
     .orel-cert-slider-wrapper {
         padding: 0 40px;
     }
@@ -669,24 +641,30 @@
 
 @media (max-width: 576px) {
     .orel-hero-text h1 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
-    .orel-hero-stats-inline {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .orel-stat-inline .orel-number {
-        font-size: 32px;
+    .orel-about-hero {
+        padding: 40px 0 80px;
     }
 
     .orel-feature-card {
-        padding: 24px 20px;
+        padding: 20px 16px;
+    }
+
+    .orel-features-section {
+        margin-top: -50px;
+        padding-bottom: 20px;
+    }
+
+    .orel-content-section,
+    .orel-certificate-section,
+    .orel-videos-section {
+        padding: 25px 0;
     }
 
     .orel-image-main {
-        padding: 40px 30px;
+        padding: 30px 20px;
     }
 
     .orel-cert-slider-wrapper {
@@ -733,20 +711,6 @@
                 <p class="orel-description">
                     1998-ci ildən inşaat sektorunda fəaliyyət göstərərək su təchizatı, isitmə və soyutma sistemlərinin satışı, quraşdırılması və servisini peşəkar şəkildə həyata keçiririk.
                 </p>
-                <div class="orel-hero-stats-inline">
-                    <div class="orel-stat-inline">
-                        <div class="orel-number">25<span>+</span></div>
-                        <div class="orel-label">İllik Təcrübə</div>
-                    </div>
-                    <div class="orel-stat-inline">
-                        <div class="orel-number">1000<span>+</span></div>
-                        <div class="orel-label">Uğurlu Layihə</div>
-                    </div>
-                    <div class="orel-stat-inline">
-                        <div class="orel-number">50<span>+</span></div>
-                        <div class="orel-label">Brend</div>
-                    </div>
-                </div>
             </div>
             <div class="orel-hero-visual">
                 <div class="orel-logo-card">
@@ -942,38 +906,42 @@
 <script src="{{asset('webcoder/assets/dist/simple-lightbox.js?v2.14.0')}}"></script>
 
 <script>
-// Certificate Slider
-const certSwiper = new Swiper('.orel-cert-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 24,
-    loop: true,
-    autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-    },
-    breakpoints: {
-        576: {
-            slidesPerView: 2,
-        },
-        768: {
-            slidesPerView: 3,
-        },
-        1024: {
-            slidesPerView: 4,
-        }
+document.addEventListener('DOMContentLoaded', function() {
+    // Certificate Slider
+    if (document.querySelector('.orel-cert-swiper')) {
+        const certSwiper = new Swiper('.orel-cert-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '#certNext, #certNextMobile',
+                prevEl: '#certPrev, #certPrevMobile',
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 4,
+                }
+            }
+        });
     }
-});
 
-// Navigation buttons
-document.getElementById('certPrev')?.addEventListener('click', () => certSwiper.slidePrev());
-document.getElementById('certNext')?.addEventListener('click', () => certSwiper.slideNext());
-document.getElementById('certPrevMobile')?.addEventListener('click', () => certSwiper.slidePrev());
-document.getElementById('certNextMobile')?.addEventListener('click', () => certSwiper.slideNext());
-
-// Lightbox for certificates
-let gallery = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250
+    // Lightbox for certificates
+    if (document.querySelector('.gallery a')) {
+        let gallery = new SimpleLightbox('.gallery a', {
+            captionsData: 'alt',
+            captionDelay: 250
+        });
+    }
 });
 </script>
 @endpush
