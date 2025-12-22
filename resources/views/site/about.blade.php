@@ -656,12 +656,12 @@
     }
 
     .orel-logo-card {
-        padding: 30px;
-        border-radius: 16px;
+        padding: 35px 50px;
+        border-radius: 18px;
     }
 
     .orel-logo-card img {
-        max-width: 140px;
+        max-width: 180px;
     }
 
     .orel-feature-card {
