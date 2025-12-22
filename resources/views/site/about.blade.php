@@ -656,7 +656,26 @@
     }
 
     .orel-feature-card {
-        padding: 20px 16px;
+        padding: 16px 14px;
+    }
+
+    .orel-feature-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 12px;
+    }
+
+    .orel-feature-icon i {
+        font-size: 22px;
+    }
+
+    .orel-feature-card h3 {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .orel-feature-card p {
+        font-size: 12px;
     }
 
     .orel-features-section {
@@ -672,6 +691,14 @@
 
     .orel-image-main {
         padding: 30px 20px;
+    }
+
+    .orel-cert-card {
+        padding: 12px;
+    }
+
+    .orel-cert-card img {
+        height: 200px;
     }
 
     .orel-cert-slider-wrapper {
