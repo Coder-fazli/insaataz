@@ -93,12 +93,13 @@ Route::get('fields/{category_id?}', [FilterController::class, 'filter'])->name('
 // Debug route to find blog post
 Route::get('/debug-blog-post', function () {
     $posts = \DB::table('blogs')
-        ->whereRaw("LOWER(title) LIKE ?", ['%borular%'])
-        ->get(['id', 'title', 'image']);
+        ->whereRaw("LOWER(slug) LIKE ?", ['%borularin-tarixi%'])
+        ->get(['id', 'title', 'image', 'slug']);
 
     $output = "<h2>Blog posts found:</h2><pre>";
     foreach ($posts as $p) {
         $output .= "ID: {$p->id}\n";
+        $output .= "Slug: {$p->slug}\n";
         $output .= "Title: {$p->title}\n";
         $output .= "Image: {$p->image}\n\n";
     }
