@@ -90,3 +90,59 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['we
 
 Route::get('fields/{category_id?}', [FilterController::class, 'filter'])->name('category-fields');
 
+// Debug route to find products
+Route::get('/debug-fondital-products', function () {
+    $names = ['victoria', 'minorca', 'maiorca', 'formentera', 'antea'];
+    $output = "<h2>Products found:</h2><pre>";
+
+    foreach ($names as $name) {
+        $products = \DB::table('products')
+            ->whereRaw("LOWER(title) LIKE ?", ["%{$name}%"])
+            ->get(['id', 'title', 'category_id']);
+
+        foreach ($products as $p) {
+            $output .= "ID: {$p->id} | Category: {$p->category_id}\n";
+            $output .= "Title: {$p->title}\n\n";
+        }
+    }
+
+    $output .= "</pre>";
+    return $output;
+});
+
+// Update route
+Route::get('/update-fondital-products-2024', function () {
+    $names = ['victoria', 'minorca', 'maiorca', 'formentera', 'antea'];
+    $updated = 0;
+    $results = [];
+
+    foreach ($names as $name) {
+        $products = \DB::table('products')
+            ->whereRaw("LOWER(title) LIKE ?", ["%{$name}%"])
+            ->get();
+
+        foreach ($products as $product) {
+            $title = json_decode($product->title, true);
+            $changed = false;
+
+            foreach (['az', 'en', 'ru'] as $lang) {
+                if (isset($title[$lang]) && !empty($title[$lang])) {
+                    if (stripos($title[$lang], 'Fondital') !== 0) {
+                        $title[$lang] = 'Fondital ' . $title[$lang];
+                        $changed = true;
+                    }
+                }
+            }
+
+            if ($changed) {
+                \DB::table('products')
+                    ->where('id', $product->id)
+                    ->update(['title' => json_encode($title, JSON_UNESCAPED_UNICODE)]);
+                $updated++;
+                $results[] = $title['az'] ?? $title['en'];
+            }
+        }
+    }
+
+    return "Done! Updated {$updated} products:<br><pre>" . implode("\n", $results) . "</pre>";
+});
