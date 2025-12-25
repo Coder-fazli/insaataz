@@ -90,6 +90,25 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['we
 
 Route::get('fields/{category_id?}', [FilterController::class, 'filter'])->name('category-fields');
 
+// Debug route to find blog post
+Route::get('/debug-blog-post', function () {
+    $posts = \DB::table('blogs')
+        ->whereRaw("LOWER(title) LIKE ?", ['%borular%'])
+        ->get(['id', 'title', 'image']);
+
+    $output = "<h2>Blog posts found:</h2><pre>";
+    foreach ($posts as $p) {
+        $output .= "ID: {$p->id}\n";
+        $output .= "Title: {$p->title}\n";
+        $output .= "Image: {$p->image}\n\n";
+    }
+    if ($posts->isEmpty()) {
+        $output .= "No posts found!";
+    }
+    $output .= "</pre>";
+    return $output;
+});
+
 // Debug route to find products
 Route::get('/debug-fondital-products', function () {
     $names = ['victoria', 'minorca', 'maiorca', 'formentera', 'antea', 'tahiti', 'bali', 'calidor'];
