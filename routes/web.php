@@ -90,6 +90,27 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['we
 
 Route::get('fields/{category_id?}', [FilterController::class, 'filter'])->name('category-fields');
 
+// Debug route to see products with Calidor or Blitz
+Route::get('/debug-fondital-products', function () {
+    $products = \DB::table('products')
+        ->where(function($query) {
+            $query->whereRaw("LOWER(title) LIKE ?", ['%calidor%'])
+                  ->orWhereRaw("LOWER(title) LIKE ?", ['%blitz%']);
+        })
+        ->get(['id', 'title', 'category_id']);
+
+    $output = "<h2>Products found with 'calidor' or 'blitz':</h2><pre>";
+    foreach ($products as $p) {
+        $output .= "ID: {$p->id} | Category: {$p->category_id}\n";
+        $output .= "Title: {$p->title}\n\n";
+    }
+    if ($products->isEmpty()) {
+        $output .= "No products found!";
+    }
+    $output .= "</pre>";
+    return $output;
+});
+
 // One-time route to add Fondital prefix to Calidor and Blitz Super products
 Route::get('/update-fondital-products-2024', function () {
     $prefixes = ['Calidor', 'Blitz Super'];
