@@ -161,6 +161,34 @@ Route::get('debug-blog-post', function () {
     return $output;
 });
 
+// Debug route to find products to exclude from Fondital search
+Route::get('/debug-exclude-products', function () {
+    $output = "<h2>Products to exclude from Fondital search:</h2><pre>";
+
+    // Boru Rezini
+    $products = \DB::table('products')
+        ->whereRaw("LOWER(JSON_EXTRACT(title, '$.az')) LIKE ?", ['%boru rezini%'])
+        ->get(['id', 'title', 'category_id']);
+
+    foreach ($products as $p) {
+        $output .= "ID: {$p->id} | Category: {$p->category_id}\n";
+        $output .= "Title: {$p->title}\n\n";
+    }
+
+    // Kompozit Boru PN 25
+    $products2 = \DB::table('products')
+        ->whereRaw("LOWER(JSON_EXTRACT(title, '$.az')) LIKE ?", ['%kompozit boru pn 25%'])
+        ->get(['id', 'title', 'category_id']);
+
+    foreach ($products2 as $p) {
+        $output .= "ID: {$p->id} | Category: {$p->category_id}\n";
+        $output .= "Title: {$p->title}\n\n";
+    }
+
+    $output .= "</pre>";
+    return $output;
+});
+
 // Debug route to find products
 Route::get('/debug-fondital-products', function () {
     $names = ['victoria', 'minorca', 'maiorca', 'formentera', 'antea', 'tahiti', 'bali', 'calidor'];
