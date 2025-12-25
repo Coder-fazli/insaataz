@@ -113,25 +113,21 @@ Route::get('/debug-fondital-products', function () {
 
 // One-time route to add Fondital prefix to Calidor and Blitz Super products
 Route::get('/update-fondital-products-2024', function () {
-    $prefixes = ['Calidor', 'Blitz Super'];
+    // Direct update for the found products
+    $productIds = [1548, 1549, 1550, 1551];
     $updated = 0;
 
-    foreach ($prefixes as $prefix) {
-        $products = \DB::table('products')
-            ->where(function($query) use ($prefix) {
-                $query->whereRaw("JSON_EXTRACT(title, '$.az') LIKE ?", ["{$prefix}%"])
-                      ->orWhereRaw("JSON_EXTRACT(title, '$.en') LIKE ?", ["{$prefix}%"])
-                      ->orWhereRaw("JSON_EXTRACT(title, '$.ru') LIKE ?", ["{$prefix}%"]);
-            })
-            ->get();
+    foreach ($productIds as $id) {
+        $product = \DB::table('products')->where('id', $id)->first();
 
-        foreach ($products as $product) {
+        if ($product) {
             $title = json_decode($product->title, true);
             $changed = false;
 
             foreach (['az', 'en', 'ru'] as $lang) {
                 if (isset($title[$lang]) && !empty($title[$lang])) {
-                    if (stripos($title[$lang], $prefix) === 0 && stripos($title[$lang], 'Fondital') !== 0) {
+                    // Only add if doesn't already start with Fondital
+                    if (stripos($title[$lang], 'Fondital') !== 0) {
                         $title[$lang] = 'Fondital ' . $title[$lang];
                         $changed = true;
                     }
@@ -140,7 +136,7 @@ Route::get('/update-fondital-products-2024', function () {
 
             if ($changed) {
                 \DB::table('products')
-                    ->where('id', $product->id)
+                    ->where('id', $id)
                     ->update(['title' => json_encode($title, JSON_UNESCAPED_UNICODE)]);
                 $updated++;
             }
