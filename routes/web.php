@@ -90,7 +90,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['we
 
 Route::get('fields/{category_id?}', [FilterController::class, 'filter'])->name('category-fields');
 
-// Update blog image route
+// Update blog image route - Borularin Tarixi
 Route::get('update-blog-image', function () {
     $blogId = 5;
     $sourcePath = public_path('temp-blog-image.jpg');
@@ -103,18 +103,39 @@ Route::get('update-blog-image', function () {
     }
 
     if (file_exists($sourcePath)) {
+        copy($sourcePath, $destPath);
+        \DB::table('blogs')->where('id', $blogId)->update(['image' => $newFileName]);
+        unlink($sourcePath);
+        return "Done! Blog image updated to: {$newFileName}";
+    }
+    return "Error: Source image not found at {$sourcePath}";
+});
+
+// Update blog image route - Brendinqde
+Route::get('update-blog-image-2', function () {
+    $slug = 'brendinqde-nelere-diqqet-edilmelidir-4';
+    $sourcePath = public_path('temp-blog-image-2.jpg');
+    $newFileName = 'blog/' . time() . '_brendinqde.jpg';
+    $destPath = storage_path('app/public/' . $newFileName);
+
+    // Create blog directory if not exists
+    if (!file_exists(storage_path('app/public/blog'))) {
+        mkdir(storage_path('app/public/blog'), 0755, true);
+    }
+
+    if (file_exists($sourcePath)) {
         // Copy file to storage
         copy($sourcePath, $destPath);
 
-        // Update database
-        \DB::table('blogs')
-            ->where('id', $blogId)
+        // Update database by slug
+        $updated = \DB::table('blogs')
+            ->whereRaw("slug LIKE ?", ["%{$slug}%"])
             ->update(['image' => $newFileName]);
 
         // Delete temp file
         unlink($sourcePath);
 
-        return "Done! Blog image updated to: {$newFileName}";
+        return "Done! Blog image updated to: {$newFileName} (Updated {$updated} post)";
     }
 
     return "Error: Source image not found at {$sourcePath}";
