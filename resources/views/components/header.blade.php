@@ -498,11 +498,4 @@
         </a>
     </div>
     @endauth
-    <div class="sticky-info">
-        <a href="{{route('cart')}}" class="">
-            <i class="icon-shopping-cart position-relative">
-                <span class="cart-count badge-circle">{{$products->sum('qty')}}</span>
-            </i>{{__('site.cart')}}
-        </a>
-    </div>
 </div>
