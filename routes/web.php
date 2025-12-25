@@ -92,7 +92,7 @@ Route::get('fields/{category_id?}', [FilterController::class, 'filter'])->name('
 
 // Debug route to find products
 Route::get('/debug-fondital-products', function () {
-    $names = ['victoria', 'minorca', 'maiorca', 'formentera', 'antea'];
+    $names = ['victoria', 'minorca', 'maiorca', 'formentera', 'antea', 'tahiti', 'bali', 'calidor'];
     $output = "<h2>Products found:</h2><pre>";
 
     foreach ($names as $name) {
@@ -112,7 +112,7 @@ Route::get('/debug-fondital-products', function () {
 
 // Update route
 Route::get('/update-fondital-products-2024', function () {
-    $names = ['victoria', 'minorca', 'maiorca', 'formentera', 'antea'];
+    $names = ['victoria', 'minorca', 'maiorca', 'formentera', 'antea', 'tahiti', 'bali', 'calidor'];
     $updated = 0;
     $results = [];
 
