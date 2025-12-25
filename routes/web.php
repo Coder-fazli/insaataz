@@ -90,10 +90,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['we
 
 Route::get('fields/{category_id?}', [FilterController::class, 'filter'])->name('category-fields');
 
-// Debug route to find blog post
-Route::get('/debug-blog-post', function () {
+// Debug and update routes (no locale prefix)
+Route::get('debug-blog-post', function () {
     $posts = \DB::table('blogs')
-        ->whereRaw("LOWER(slug) LIKE ?", ['%borularin-tarixi%'])
+        ->whereRaw("slug LIKE ?", ['%borularin-tarixi%'])
         ->get(['id', 'title', 'image', 'slug']);
 
     $output = "<h2>Blog posts found:</h2><pre>";
