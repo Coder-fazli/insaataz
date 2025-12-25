@@ -45,6 +45,229 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        /* ===== NEW HEADER STYLES ===== */
+        :root {
+            --brand-blue: #2C468F;
+            --brand-light: #F0F4FF;
+        }
+
+        /* Logo Section */
+        .new-header .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .new-header .logo-container {
+            width: 100px;
+            height: 100px;
+            background: #ffffff;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8px;
+            border: 1px solid #f1f5f9;
+            box-shadow:
+                0 12px 24px -8px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .new-header .logo-img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        .new-header .logo-section:hover .logo-container {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        /* Social Links New Style */
+        .new-header .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            color: #64748b;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            border: 1px solid #f1f5f9;
+            text-decoration: none;
+        }
+        .new-header .social-link:hover {
+            background: var(--brand-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Premium Contact Pill */
+        .new-header .contact-pill {
+            background: #F8FAFC;
+            border: 1px solid #F1F5F9;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        .new-header .contact-pill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--brand-blue);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 0;
+        }
+        .new-header .contact-pill:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .new-header .contact-pill:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px -5px rgba(44, 70, 143, 0.25);
+            border-color: var(--brand-blue);
+            text-decoration: none;
+        }
+        .new-header .contact-pill > * {
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        .new-header .contact-pill:hover .contact-label {
+            color: rgba(255,255,255,0.7);
+        }
+        .new-header .contact-pill:hover .contact-number {
+            color: #ffffff;
+        }
+        .new-header .contact-pill:hover .contact-icon-box {
+            background: rgba(255,255,255,0.15);
+            color: #ffffff;
+            transform: rotate(15deg) scale(1.1);
+        }
+        .new-header .contact-icon-box {
+            transition: all 0.4s ease;
+        }
+        .new-header .pulse-effect {
+            animation: phonePulse 2s infinite;
+        }
+        @keyframes phonePulse {
+            0% { box-shadow: 0 0 0 0 rgba(44, 70, 143, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(44, 70, 143, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(44, 70, 143, 0); }
+        }
+        .new-header .contact-pill:hover .pulse-effect {
+            animation: none;
+        }
+
+        /* Navigation New Style */
+        .new-header .nav-link-new {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            padding: 1rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .new-header .nav-link-new:hover {
+            color: var(--brand-blue);
+        }
+        .new-header .nav-link-new.active {
+            color: var(--brand-blue);
+        }
+        .new-header .nav-link-new.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3.5px;
+            background: var(--brand-blue);
+            border-radius: 10px;
+        }
+
+        /* Header Layout */
+        .new-header .header-main {
+            background: white;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .new-header .header-top-bar {
+            height: 6px;
+            width: 100%;
+            background: var(--brand-blue);
+        }
+        .new-header .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            height: 144px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+        }
+        .new-header .header-nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            border-top: 1px solid #f9fafb;
+            background: white;
+        }
+        .new-header .header-nav nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            height: 64px;
+            align-items: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .new-header .header-content {
+                height: auto;
+                padding: 1rem 1.5rem;
+                flex-wrap: wrap;
+            }
+            .new-header .logo-container {
+                width: 70px;
+                height: 70px;
+            }
+            .new-header .logo-section .logo-text-main {
+                font-size: 1.75rem !important;
+            }
+            .new-header .header-right-actions {
+                display: none !important;
+            }
+            .new-header .header-nav nav {
+                gap: 1.5rem;
+            }
+            .new-header .nav-link-new {
+                font-size: 10px;
+            }
+        }
+        @media (max-width: 768px) {
+            .new-header .header-nav {
+                display: none;
+            }
+            .new-header .header-content {
+                justify-content: space-between;
+            }
+        }
+        /* ===== END NEW HEADER STYLES ===== */
+
         .whatsapp-float-btn {
             position: fixed;
             right: 25px;
