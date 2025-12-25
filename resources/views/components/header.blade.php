@@ -83,6 +83,12 @@
     .new-header-search {
         flex: 1;
         max-width: 560px;
+        display: flex;
+        align-items: center;
+    }
+    .new-header-search form {
+        width: 100%;
+        margin: 0;
     }
     .new-header-search-box {
         background: #ffffff;
@@ -324,12 +330,13 @@
     }
 </style>
 
+<header class="header">
 <div class="new-header-wrapper">
     {{-- Blue Top Bar --}}
     <div class="new-header-topbar"></div>
 
     {{-- Main Header --}}
-    <header class="new-header-main">
+    <div class="new-header-main">
         <div class="new-header-container">
             {{-- Logo --}}
             <a href="{{route('home')}}" class="new-header-logo">
@@ -405,8 +412,9 @@
                 <a href="{{route('contact')}}" class="new-header-nav-link {{\Illuminate\Support\Facades\Route::currentRouteName()=='contact' ? 'active' : ''}}">{{__('site.contact')}}</a>
             </nav>
         </div>
-    </header>
+    </div>
 </div>
+</header>
 
 {{-- Mobile Menu Overlay --}}
 <div class="mobile-menu-overlay"></div>
