@@ -512,6 +512,11 @@ class ProductController extends Controller
                     $query->orWhereIn('products.category_id', [80, 121]);
                 }
             })
+            // Exclude specific products when searching for "fondital"
+            ->when(stripos(mb_strtolower($search), 'fondital') !== false, function($query) use ($locale) {
+                $query->whereRaw("LOWER(JSON_EXTRACT(products.title, '$.{$locale}')) NOT LIKE ?", ['%boru rezini - 600mm%'])
+                      ->whereRaw("LOWER(JSON_EXTRACT(products.title, '$.{$locale}')) NOT LIKE ?", ['%kompozit boru pn 25 - 110mm%']);
+            })
             // Special ordering for "radiator" search: prioritize Dekorativ Radiatorlar (95) over Radiator Ventilləri (110)
             ->when(stripos(mb_strtolower($search), 'radiator') !== false, function($query) {
                 $query->orderByRaw("
