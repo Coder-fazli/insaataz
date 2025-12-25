@@ -90,6 +90,36 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['we
 
 Route::get('fields/{category_id?}', [FilterController::class, 'filter'])->name('category-fields');
 
+// Update blog image route
+Route::get('update-blog-image', function () {
+    $blogId = 5;
+    $sourcePath = public_path('temp-blog-image.jpg');
+    $newFileName = 'blog/' . time() . '_borularin-tarixi.jpg';
+    $destPath = storage_path('app/public/' . $newFileName);
+
+    // Create blog directory if not exists
+    if (!file_exists(storage_path('app/public/blog'))) {
+        mkdir(storage_path('app/public/blog'), 0755, true);
+    }
+
+    if (file_exists($sourcePath)) {
+        // Copy file to storage
+        copy($sourcePath, $destPath);
+
+        // Update database
+        \DB::table('blogs')
+            ->where('id', $blogId)
+            ->update(['image' => $newFileName]);
+
+        // Delete temp file
+        unlink($sourcePath);
+
+        return "Done! Blog image updated to: {$newFileName}";
+    }
+
+    return "Error: Source image not found at {$sourcePath}";
+});
+
 // Debug and update routes (no locale prefix)
 Route::get('debug-blog-post', function () {
     $posts = \DB::table('blogs')
