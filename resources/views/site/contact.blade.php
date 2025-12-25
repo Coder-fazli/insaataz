@@ -65,6 +65,7 @@
                                         $phoneData = $settings->phone;
                                         $emailData = $settings->email;
                                     @endphp
+                                    <a href="tel:+994102900101">+994 10 290 01 01</a><br>
                                     @if (!empty($phoneData))
                                        @foreach ($phoneData as $phone)
                                            <a href="tel:{{ $phone['attributes']['phone'] }}">{{ $phone['attributes']['phone'] }}</a><br>
