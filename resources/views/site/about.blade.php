@@ -126,14 +126,16 @@
 
 .orel-features-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .orel-feature-card {
     background: #ffffff;
     border-radius: 20px;
-    padding: 32px 24px;
+    padding: 40px 32px;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0,0,0,0.08);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
