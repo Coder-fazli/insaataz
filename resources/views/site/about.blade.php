@@ -793,13 +793,6 @@
             </div>
             <div class="orel-feature-card">
                 <div class="orel-feature-icon">
-                    <i class="fas fa-snowflake"></i>
-                </div>
-                <h3>Soyutma Sistemləri</h3>
-                <p>Kondisioner və soyutma avadanlıqları</p>
-            </div>
-            <div class="orel-feature-card">
-                <div class="orel-feature-icon">
                     <i class="fas fa-tools"></i>
                 </div>
                 <h3>Servis Xidməti</h3>
