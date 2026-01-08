@@ -31,16 +31,6 @@
 
                 <hr class="short-divider">
 
-                <div class="price-box">
-                    @if($product->discount_price)
-
-                        <span class="old-price">{!! currency_index() !!} {{$product->price}}</span>
-                        <span class="new-price">{!! currency_index() !!} {{$product->discount_price}}</span>
-                    @else
-                        <span class="new-price">{!! currency_index() !!} {{$product->price}}</span>
-                    @endif
-                </div>
-
                 <div class="product-desc">
                     <p>
                         {!! $product->desc !!}
@@ -54,21 +44,6 @@
                     </li>
 
                 </ul>
-
-
-                <div class="product-action">
-
-                    <div class="product-single-qty">
-                        <input class="horizontal-quantity touchInput form-control" max="{{$product->stock}}" type="text"/>
-                    </div>
-
-                    <a href="javascript:;" class="btn btn-dark  mr-2 btnAddToCart" title="Add to Cart" data-id="{{$product->id}}" id="btnAddToCart">{{__('site.add_to_cart')}}</a>
-
-                    <a href="https://www.portotheme.com/html/porto_ecommerce/ajax/cart.html"
-                       class="btn view-cart d-none">{{__('site.view_cart')}}</a>
-                </div>
-
-                <hr class="divider mb-0 mt-0">
 
 
             </div>
