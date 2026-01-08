@@ -22,8 +22,8 @@
             gap: 8px;
             padding: 10px 22px;
             background-color: transparent;
-            color: #222;
-            border: 2px solid #222;
+            color: #2C468F;
+            border: 2px solid #2C468F;
             border-radius: 25px;
             font-size: 13px;
             font-weight: 600;
@@ -31,7 +31,7 @@
             transition: all 0.3s;
         }
         .product-contact-buttons .btn-call:hover {
-            background-color: #222;
+            background-color: #2C468F;
             color: #fff;
         }
         .product-contact-buttons .btn-whatsapp {
