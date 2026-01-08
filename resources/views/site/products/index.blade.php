@@ -370,11 +370,7 @@
                                 </div>
                             </div>
                             <h3 class="product-title"><a href="https://orelinsaat.az/${lang}/product/${data.slug[lang]}">${data.title[lang]}</a></h3>
-                            <div class="price-box">
-                                <span class="product-price">₼ ${data.price}</span>
-                            </div>
                             <div class="product-action">
-                                <a class="btn-icon-wish btnAddToCart" data-id="${data.id}" title="site.wishlist"><i class="icon-cart"></i></a>
                                 <a href="https://orelinsaat.az/${lang}/product/${data.slug[lang]}" class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i><span>${load.getAttribute('data-more')}</span></a>
                                 <a href="https://orelinsaat.az/api/product/quick-view/${data.id}" class="btn-quickview" title="Sürətli Baxış"><i class="fas fa-external-link-alt"></i></a>
                             </div>
