@@ -12,7 +12,7 @@
         }
         .product-contact-buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             margin-top: 20px;
         }
         .product-contact-buttons .btn-call {
@@ -20,18 +20,18 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 25px;
-            background-color: #222529;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            font-size: 14px;
+            padding: 10px 22px;
+            background-color: transparent;
+            color: #222;
+            border: 2px solid #222;
+            border-radius: 25px;
+            font-size: 13px;
             font-weight: 600;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
         .product-contact-buttons .btn-call:hover {
-            background-color: #333;
+            background-color: #222;
             color: #fff;
         }
         .product-contact-buttons .btn-whatsapp {
@@ -39,18 +39,19 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 25px;
+            padding: 10px 22px;
             background-color: #25d366;
             color: #fff;
-            border: none;
-            border-radius: 3px;
-            font-size: 14px;
+            border: 2px solid #25d366;
+            border-radius: 25px;
+            font-size: 13px;
             font-weight: 600;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
         .product-contact-buttons .btn-whatsapp:hover {
             background-color: #1da851;
+            border-color: #1da851;
             color: #fff;
         }
         @media (max-width: 576px) {
