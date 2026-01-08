@@ -5,93 +5,11 @@
 @endpush
 
  <style>
-      * {
-        border: 0;
-        outline: 0;
-        box-sizing: border-box;
-      }
-
-      .backdrop {
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.385);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 9999;
-      }
-
-      .modal_product {
-        position: relative;
-        width: 500px;
-        padding: 30px;
-        background-color: white;
-        z-index: 9999;
-      }
-
-      .modal_product > form {
-        margin-bottom: 0;
-      }
-
-      .modal_product > form > div {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        column-gap: 2rem;
-      }
-
-      .modal_product > form > div > * {
-        display: flex;
-        flex-direction: column;
-        row-gap: 2rem;
-        flex: 1;
-      }
-
-      .modal_product input {
-        border: 1px solid #222529;
-        height: 3rem;
-        padding: 5px;
-        font-size: 16px;
-      }
-
-      .modal_product > form > button:nth-child(2) {
-        width: 100%;
-        height: 3rem;
-        margin-top: 2rem;
-        cursor: pointer;
-        background-color: #222529;
-        color: #fff;
-        font-size: 16px;
-      }
         .shema_images{
             display:flex;
             justify-content:center;
             align-items:center;
         }
-      #close {
-        position: absolute;
-        background-color: transparent;
-        font-size: 18px;
-        top: 8px;
-        right: 8px;
-        cursor: pointer;
-      }
-
-      @media (max-width: 600px) {
-        .modal_product > form > div {
-          flex-direction: column;
-          width: 100%;
-          row-gap: 1rem;
-        }
-
-        .modal_product > form > div > * {
-          width: 100%;
-          row-gap: 1rem;
-        }
-      }
     </style>
 @section('content')
 
@@ -186,23 +104,6 @@
 
                         <hr class="short-divider">
 
-                        <div class="price-box">
-                            @if($product->price == "0.00")
-                            <button class="btn btn-dark get_price">
-                                {{__('site.get_price')}}
-                            </button>
-                            @else
-                                @if($product->discount_price)
-
-                                    <span class="old-price">{!! currency_index() !!} {{$product->price}}</span>
-                                    <span class="new-price">{!! currency_index() !!} {{$product->discount_price}}</span>
-                                @else
-                                    <span class="new-price">{!! currency_index() !!} {{$product->price}}</span>
-                                @endif
-                            @endif
-                     
-                        </div>
-
                         <div class="product-desc">
                             <p>
                                 {!! $product->desc !!}
@@ -216,22 +117,6 @@
                             </li>
 
                         </ul>
-
-
-                        <div class="product-action">
-
-
-                            <div class="product-single-qty">
-                                <input class="horizontal-quantity touchInput form-control" max="{{$product->stock}}" type="text">
-                            </div>
-                            <!-- End .product-single-qty -->
-
-                            <a href="javascript:;" class="btn btn-dark add-cart mr-2 btnAddToCart" title="Add to Cart"
-                               data-id="{{$product->id}}" >{{__('site.add_to_cart')}}</a>
-
-                            <a href="{{route('cart')}}" class="btn btn-gray view-cart d-none">{{__('site.view_cart')}}</a>
-
-                        </div>
 
                         {{--                        <hr class="divider mb-0 mt-0">--}}
 
@@ -337,48 +222,7 @@
 
         </div>
 
-        <div class="backdrop">
-        <div class="modal_product">
-        <form action="{{route('get_price')}}">
-          <div>
-            <div>
-              <input type="text" name="name" id="" placeholder="{{__('site_form.name')}}" />
-              <input type="text" name="surname" id="" placeholder="{{__('site_form.surname')}}" />
-            </div>
-            <div>
-              <input type="text" name="email_and_phone" id="" placeholder="{{__('site_form.email_and_phone')}}" />
-              <input
-                type="text"
-                name="product_name"
-                id=""
-                placeholder=""
-                
-                value="{{$product->title}}"
-              />
-            </div>
-          </div>
-          <button>{{__('site_form.send')}}</button>
-          <button id="close" type="button">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </form>
-      </div>
-    </div>
     </main>
-   <script>
-      const getPriceBtn = document.querySelector(".get_price")
-      const backdrop = document.querySelector(".backdrop")
-
-      getPriceBtn.addEventListener("click", ()=>{
-        backdrop.style.display = "flex";
-      })
-
-      const closeBtn = document.getElementById("close");
-
-      closeBtn.addEventListener("click", () => {
-        backdrop.style.display = "none";
-      });
-   </script>
 @endsection
 
 @push('foot')
