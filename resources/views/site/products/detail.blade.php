@@ -10,6 +10,54 @@
             justify-content:center;
             align-items:center;
         }
+        .product-contact-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .product-contact-buttons .btn-call {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background-color: #222529;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .product-contact-buttons .btn-call:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        .product-contact-buttons .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background-color: #25d366;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .product-contact-buttons .btn-whatsapp:hover {
+            background-color: #1da851;
+            color: #fff;
+        }
+        @media (max-width: 576px) {
+            .product-contact-buttons {
+                flex-direction: column;
+            }
+        }
     </style>
 @section('content')
 
@@ -117,6 +165,17 @@
                             </li>
 
                         </ul>
+
+                        <div class="product-contact-buttons">
+                            <a href="tel:+994102900101" class="btn-call">
+                                <i class="fas fa-phone-alt"></i>
+                                Zəng et
+                            </a>
+                            <a href="https://wa.me/994102900101" target="_blank" class="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </a>
+                        </div>
 
                         {{--                        <hr class="divider mb-0 mt-0">--}}
 
