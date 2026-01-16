@@ -511,6 +511,14 @@ class ProductController extends Controller
                 if (stripos($searchNormalized, 'firat') !== false) {
                     $query->orWhereIn('products.category_id', [80, 121]);
                 }
+
+                // Special case: if searching for "general fittings" or "insaat fittinq", include category 112 (İnşaat Fittinqler)
+                if (stripos($searchNormalized, 'general fittings') !== false ||
+                    stripos($searchNormalized, 'general fitting') !== false ||
+                    stripos($searchNormalized, 'insaat fittinq') !== false ||
+                    stripos($searchNormalized, 'insaat fitting') !== false) {
+                    $query->orWhere('products.category_id', 112);
+                }
             })
             // Exclude specific products when searching for "fondital"
             ->when(stripos(mb_strtolower($search), 'fondital') !== false, function($query) use ($locale) {
