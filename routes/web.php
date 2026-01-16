@@ -246,11 +246,10 @@ Route::get('/update-fondital-products-2024', function () {
     return "Done! Updated {$updated} products:<br><pre>" . implode("\n", $results) . "</pre>";
 });
 
-// Add General fittings to category 112 product titles
-Route::get('/add-general-fittings', function () {
+// Remove General fittings from category 112 product titles
+Route::get('/remove-general-fittings', function () {
     $products = \DB::table('products')
         ->where('category_id', 112)
-        ->where('status', 1)
         ->get();
 
     $updated = 0;
@@ -262,8 +261,8 @@ Route::get('/add-general-fittings', function () {
 
         foreach (['az', 'en', 'ru'] as $lang) {
             if (isset($title[$lang]) && !empty($title[$lang])) {
-                if (stripos($title[$lang], 'General fittings') === false) {
-                    $title[$lang] = trim($title[$lang]) . ' General fittings';
+                if (stripos($title[$lang], 'General fittings') !== false) {
+                    $title[$lang] = trim(str_ireplace('General fittings', '', $title[$lang]));
                     $changed = true;
                 }
             }
@@ -278,5 +277,5 @@ Route::get('/add-general-fittings', function () {
         }
     }
 
-    return "Done! Added 'General fittings' to {$updated} product titles:<br><pre>" . implode("\n", $results) . "</pre>";
+    return "Done! Removed 'General fittings' from {$updated} product titles:<br><pre>" . implode("\n", $results) . "</pre>";
 });
