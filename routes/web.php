@@ -245,3 +245,38 @@ Route::get('/update-fondital-products-2024', function () {
 
     return "Done! Updated {$updated} products:<br><pre>" . implode("\n", $results) . "</pre>";
 });
+
+// Add General fittings to category 112 product titles
+Route::get('/add-general-fittings', function () {
+    $products = \DB::table('products')
+        ->where('category_id', 112)
+        ->where('status', 1)
+        ->get();
+
+    $updated = 0;
+    $results = [];
+
+    foreach ($products as $product) {
+        $title = json_decode($product->title, true);
+        $changed = false;
+
+        foreach (['az', 'en', 'ru'] as $lang) {
+            if (isset($title[$lang]) && !empty($title[$lang])) {
+                if (stripos($title[$lang], 'General fittings') === false) {
+                    $title[$lang] = trim($title[$lang]) . ' General fittings';
+                    $changed = true;
+                }
+            }
+        }
+
+        if ($changed) {
+            \DB::table('products')
+                ->where('id', $product->id)
+                ->update(['title' => json_encode($title, JSON_UNESCAPED_UNICODE)]);
+            $updated++;
+            $results[] = $title['az'] ?? $title['en'];
+        }
+    }
+
+    return "Done! Added 'General fittings' to {$updated} product titles:<br><pre>" . implode("\n", $results) . "</pre>";
+});
