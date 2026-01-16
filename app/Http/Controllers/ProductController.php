@@ -512,11 +512,15 @@ class ProductController extends Controller
                     $query->orWhereIn('products.category_id', [80, 121]);
                 }
 
-                // Special case: if searching for "general fittings" or "insaat fittinq", include category 112 (İnşaat Fittinqler)
+                // Special case: if searching for "general fittings", "fittinqlər", "fitinqlər" etc., include category 112 (İnşaat Fittinqler)
                 if (stripos($searchNormalized, 'general fittings') !== false ||
                     stripos($searchNormalized, 'general fitting') !== false ||
                     stripos($searchNormalized, 'insaat fittinq') !== false ||
-                    stripos($searchNormalized, 'insaat fitting') !== false) {
+                    stripos($searchNormalized, 'insaat fitting') !== false ||
+                    stripos($search, 'fittinqlər') !== false ||
+                    stripos($search, 'fitinqlər') !== false ||
+                    stripos($search, 'fittinqler') !== false ||
+                    stripos($search, 'fitinqler') !== false) {
                     $query->orWhere('products.category_id', 112);
                 }
             })
