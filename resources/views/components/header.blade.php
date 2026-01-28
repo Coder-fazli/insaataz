@@ -72,11 +72,11 @@
         color: #2C468F;
     }
     .new-header-logo-sub {
-        font-size: 18px;
+        font-size: 26px;
         font-weight: 900;
         color: #2C468F;
-        letter-spacing: 0.35em;
-        margin-top: 4px;
+        letter-spacing: 0.15em;
+        margin-top: 2px;
         opacity: 0.9;
     }
     .new-header-search {
