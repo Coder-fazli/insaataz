@@ -72,12 +72,11 @@
         color: #2C468F;
     }
     .new-header-logo-sub {
-        font-size: 12px;
+        font-size: 18px;
         font-weight: 900;
         color: #2C468F;
-        text-transform: uppercase;
-        letter-spacing: 0.5em;
-        margin-top: 8px;
+        letter-spacing: 0.35em;
+        margin-top: 4px;
         opacity: 0.9;
     }
     .new-header-search {
@@ -345,7 +344,7 @@
                 </div>
                 <div class="new-header-logo-text">
                     <span class="new-header-logo-main">OREL</span>
-                    <span class="new-header-logo-sub">iNSAAT</span>
+                    <span class="new-header-logo-sub">iNşAAT</span>
                 </div>
             </a>
 
