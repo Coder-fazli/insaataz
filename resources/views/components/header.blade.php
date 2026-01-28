@@ -344,7 +344,7 @@
                 </div>
                 <div class="new-header-logo-text">
                     <span class="new-header-logo-main">OREL</span>
-                    <span class="new-header-logo-sub">iNşAAT</span>
+                    <span class="new-header-logo-sub">İNŞAAT</span>
                 </div>
             </a>
 
