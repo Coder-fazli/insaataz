@@ -72,10 +72,10 @@
         color: #2C468F;
     }
     .new-header-logo-sub {
-        font-size: 26px;
+        font-size: 20px;
         font-weight: 900;
         color: #2C468F;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.2em;
         margin-top: 2px;
         opacity: 0.9;
     }
