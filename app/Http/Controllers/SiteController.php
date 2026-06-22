@@ -159,9 +159,19 @@ class SiteController extends Controller
         $certificates = Certificate::all();
         $videos = Video::latest()->limit(2)->get();
 
-        $featureCards = \App\Models\AboutFeatureCard::orderBy('sort_order')->orderBy('id')->get();
-        $checklistItems = \App\Models\AboutChecklistItem::orderBy('sort_order')->orderBy('id')->get();
-        $statCards = \App\Models\AboutStatCard::orderBy('sort_order')->orderBy('id')->get();
+        // Fail-safe: if the section tables haven't been migrated yet, fall back
+        // to empty collections so the page renders its default content instead
+        // of throwing a 500.
+        try {
+            $featureCards = \App\Models\AboutFeatureCard::orderBy('sort_order')->orderBy('id')->get();
+            $checklistItems = \App\Models\AboutChecklistItem::orderBy('sort_order')->orderBy('id')->get();
+            $statCards = \App\Models\AboutStatCard::orderBy('sort_order')->orderBy('id')->get();
+        } catch (\Throwable $e) {
+            \Log::error('About sections load failed: ' . $e->getMessage());
+            $featureCards = collect();
+            $checklistItems = collect();
+            $statCards = collect();
+        }
 
         // Get partners from database
         $partners = Partner::all();
