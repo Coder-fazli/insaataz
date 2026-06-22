@@ -579,8 +579,7 @@
 }
 
 .orel-richtext-content {
-    max-width: 900px;
-    margin: 0 auto;
+    width: 100%;
     font-size: 16px;
     line-height: 1.9;
     color: #475569;
@@ -863,17 +862,6 @@
     </div>
 </section>
 
-<!-- Company Description (rich text) -->
-@if(trim(strip_tags(optional($about)->description ?? '')) !== '')
-<section class="orel-richtext-section">
-    <div class="container">
-        <div class="orel-richtext-content">
-            {!! optional($about)->description !!}
-        </div>
-    </div>
-</section>
-@endif
-
 <!-- Content Section -->
 @php
     $defaultChecklist = [
@@ -943,6 +931,17 @@
         </div>
     </div>
 </section>
+
+<!-- Company Description (rich text) -->
+@if(trim(strip_tags(optional($about)->description ?? '')) !== '')
+<section class="orel-richtext-section">
+    <div class="container">
+        <div class="orel-richtext-content">
+            {!! optional($about)->description !!}
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- Certificate Section -->
 @if($certificates->count() > 0)
