@@ -26,6 +26,14 @@ class AboutSeeder extends Seeder
         // Only fill the new section fields if they are still empty, so we never
         // overwrite content an admin has already edited.
         if (blank($about->hero_title)) {
+            // Legacy NOT NULL columns — ensure they have a value on fresh installs.
+            if (blank($about->title)) {
+                $about->title = [$locale => 'OREL İnşaat MMC'];
+            }
+            if (blank($about->description)) {
+                $about->description = [$locale => 'OREL İnşaat MMC'];
+            }
+
             $about->hero_badge = [$locale => 'Haqqımızda'];
             $about->hero_title = [$locale => 'OREL İnşaat MMC'];
             $about->hero_title_highlight = [$locale => 'Etibarlı Tərəfdaş'];
