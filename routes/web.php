@@ -246,6 +246,25 @@ Route::get('/update-fondital-products-2024', function () {
     return "Done! Updated {$updated} products:<br><pre>" . implode("\n", $results) . "</pre>";
 });
 
+// TEMPORARY: run the About-section migrations + seed without terminal access.
+// Visit:  /run-about-migrations?key=orel-2026-migrate
+// IMPORTANT: delete this route once it reports "Done".
+Route::get('/run-about-migrations', function () {
+    if (request('key') !== 'orel-2026-migrate') {
+        abort(403);
+    }
+
+    \Artisan::call('migrate', ['--force' => true]);
+    $migrate = \Artisan::output();
+
+    \Artisan::call('db:seed', ['--class' => 'AboutSeeder', '--force' => true]);
+    $seed = \Artisan::output();
+
+    return "<h2>migrate</h2><pre>" . e($migrate) . "</pre>"
+        . "<h2>db:seed AboutSeeder</h2><pre>" . e($seed) . "</pre>"
+        . "<p><strong>Done.</strong> Now delete the /run-about-migrations route from routes/web.php.</p>";
+});
+
 // Remove General fittings from category 112 product titles
 Route::get('/remove-general-fittings', function () {
     $products = \DB::table('products')
