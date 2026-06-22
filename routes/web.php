@@ -251,18 +251,26 @@ Route::get('/update-fondital-products-2024', function () {
 // IMPORTANT: delete this route once it reports "Done".
 Route::get('/run-about-migrations', function () {
     if (request('key') !== 'orel-2026-migrate') {
-        abort(403);
+        return response('Wrong or missing key. Use ?key=orel-2026-migrate', 403);
     }
 
-    \Artisan::call('migrate', ['--force' => true]);
-    $migrate = \Artisan::output();
+    try {
+        \Artisan::call('migrate', ['--force' => true]);
+        $migrate = \Artisan::output();
 
-    \Artisan::call('db:seed', ['--class' => 'AboutSeeder', '--force' => true]);
-    $seed = \Artisan::output();
+        \Artisan::call('db:seed', ['--class' => 'AboutSeeder', '--force' => true]);
+        $seed = \Artisan::output();
 
-    return "<h2>migrate</h2><pre>" . e($migrate) . "</pre>"
-        . "<h2>db:seed AboutSeeder</h2><pre>" . e($seed) . "</pre>"
-        . "<p><strong>Done.</strong> Now delete the /run-about-migrations route from routes/web.php.</p>";
+        return "<h2>migrate</h2><pre>" . e($migrate) . "</pre>"
+            . "<h2>db:seed AboutSeeder</h2><pre>" . e($seed) . "</pre>"
+            . "<p><strong>Done.</strong> Now delete the /run-about-migrations route from routes/web.php.</p>";
+    } catch (\Throwable $e) {
+        return response(
+            "<h2>ERROR</h2><pre>" . e($e->getMessage()) . "\n\n"
+            . e($e->getTraceAsString()) . "</pre>",
+            200
+        );
+    }
 });
 
 // Remove General fittings from category 112 product titles
