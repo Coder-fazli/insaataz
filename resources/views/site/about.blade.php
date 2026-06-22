@@ -759,16 +759,16 @@
             <div class="orel-hero-text">
                 <div class="orel-badge">
                     <i class="fas fa-building"></i>
-                    Haqqımızda
+                    {{ optional($about)->hero_badge ?: 'Haqqımızda' }}
                 </div>
-                <h1>OREL İnşaat MMC<br><span>Etibarlı Tərəfdaş</span></h1>
+                <h1>{{ optional($about)->hero_title ?: 'OREL İnşaat MMC' }}<br><span>{{ optional($about)->hero_title_highlight ?: 'Etibarlı Tərəfdaş' }}</span></h1>
                 <p class="orel-description">
-                    1998-ci ildən inşaat sektorunda fəaliyyət göstərərək su təchizatı, isitmə və soyutma sistemlərinin satışı, quraşdırılması və servisini peşəkar şəkildə həyata keçiririk.
+                    {{ optional($about)->hero_description ?: '1998-ci ildən inşaat sektorunda fəaliyyət göstərərək su təchizatı, isitmə və soyutma sistemlərinin satışı, quraşdırılması və servisini peşəkar şəkildə həyata keçiririk.' }}
                 </p>
             </div>
             <div class="orel-hero-visual">
                 <div class="orel-logo-card">
-                    <img src="{{asset('images/footer-logo.png')}}" alt="OREL İnşaat">
+                    <img src="{{ optional($about)->hero_image ? asset('storage/'.$about->hero_image) : asset('images/footer-logo.png') }}" alt="OREL İnşaat">
                 </div>
             </div>
         </div>
@@ -776,64 +776,72 @@
 </section>
 
 <!-- Features Section -->
+@php
+    $defaultFeatureCards = [
+        ['icon' => 'fas fa-temperature-high', 'title' => 'İstilik Sistemləri', 'description' => 'Keyfiyyətli istilik avadanlıqları və boru sistemləri'],
+        ['icon' => 'fas fa-tint',             'title' => 'Su Təchizatı',      'description' => 'Müasir su təchizatı və kanalizasiya həlləri'],
+        ['icon' => 'fas fa-tools',            'title' => 'Servis Xidməti',    'description' => 'Peşəkar quraşdırma və texniki dəstək'],
+    ];
+    $featureCardsList = (isset($featureCards) && $featureCards->count() > 0)
+        ? $featureCards->map(fn($c) => ['icon' => $c->icon, 'title' => $c->title, 'description' => $c->description])
+        : collect($defaultFeatureCards);
+@endphp
 <section class="orel-features-section">
     <div class="container">
         <div class="orel-features-grid">
+            @foreach($featureCardsList as $card)
             <div class="orel-feature-card">
                 <div class="orel-feature-icon">
-                    <i class="fas fa-temperature-high"></i>
+                    <i class="{{ data_get($card, 'icon', 'fas fa-check') }}"></i>
                 </div>
-                <h3>İstilik Sistemləri</h3>
-                <p>Keyfiyyətli istilik avadanlıqları və boru sistemləri</p>
+                <h3>{{ data_get($card, 'title') }}</h3>
+                <p>{{ data_get($card, 'description') }}</p>
             </div>
-            <div class="orel-feature-card">
-                <div class="orel-feature-icon">
-                    <i class="fas fa-tint"></i>
-                </div>
-                <h3>Su Təchizatı</h3>
-                <p>Müasir su təchizatı və kanalizasiya həlləri</p>
-            </div>
-            <div class="orel-feature-card">
-                <div class="orel-feature-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h3>Servis Xidməti</h3>
-                <p>Peşəkar quraşdırma və texniki dəstək</p>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
 
 <!-- Content Section -->
+@php
+    $defaultChecklist = [
+        'Hərtərəfli mühəndislik və layihələndirmə xidmətləri',
+        'Beynəlxalq standartlara uyğun avadanlıqlar',
+        'Zəmanətli quraşdırma və satış sonrası dəstək',
+        'Fərdi yanaşma və müştəri məmnuniyyəti',
+    ];
+    $checklistList = (isset($checklistItems) && $checklistItems->count() > 0)
+        ? $checklistItems->map(fn($c) => $c->text)
+        : collect($defaultChecklist);
+
+    $defaultStatCards = [
+        ['icon' => 'fas fa-users',    'value' => '500+', 'label' => 'Razı Müştəri'],
+        ['icon' => 'fas fa-handshake','value' => '50+',  'label' => 'Tərəfdaş'],
+    ];
+    $statCardsList = (isset($statCards) && $statCards->count() > 0)
+        ? $statCards->map(fn($c) => ['icon' => $c->icon, 'value' => $c->value, 'label' => $c->label])
+        : collect($defaultStatCards);
+    $statPositions = ['orel-top-right', 'orel-bottom-left'];
+@endphp
 <section class="orel-content-section">
     <div class="container">
         <div class="orel-content-grid">
             <div class="orel-content-text">
                 <div class="orel-section-badge">
                     <i class="fas fa-star"></i>
-                    Niyə Biz?
+                    {{ optional($about)->whyus_badge ?: 'Niyə Biz?' }}
                 </div>
-                <h2>Müasir Texnologiyalar,<br><span>Etibarlı Xidmət</span></h2>
+                <h2>{{ optional($about)->whyus_title ?: 'Müasir Texnologiyalar,' }}<br><span>{{ optional($about)->whyus_title_highlight ?: 'Etibarlı Xidmət' }}</span></h2>
                 <p class="orel-lead">
-                    Komandamız müasir memarlıq və mühəndislik standartlarına uyğun, innovativ həllərlə yaşayış və sənaye obyektləri üçün etibarlı layihələr təqdim edir.
+                    {{ optional($about)->whyus_lead ?: 'Komandamız müasir memarlıq və mühəndislik standartlarına uyğun, innovativ həllərlə yaşayış və sənaye obyektləri üçün etibarlı layihələr təqdim edir.' }}
                 </p>
                 <ul class="orel-check-list">
+                    @foreach($checklistList as $item)
                     <li>
                         <div class="orel-icon"><i class="fas fa-check"></i></div>
-                        <span>Hərtərəfli mühəndislik və layihələndirmə xidmətləri</span>
+                        <span>{{ $item }}</span>
                     </li>
-                    <li>
-                        <div class="orel-icon"><i class="fas fa-check"></i></div>
-                        <span>Beynəlxalq standartlara uyğun avadanlıqlar</span>
-                    </li>
-                    <li>
-                        <div class="orel-icon"><i class="fas fa-check"></i></div>
-                        <span>Zəmanətli quraşdırma və satış sonrası dəstək</span>
-                    </li>
-                    <li>
-                        <div class="orel-icon"><i class="fas fa-check"></i></div>
-                        <span>Fərdi yanaşma və müştəri məmnuniyyəti</span>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="orel-content-image">
@@ -841,30 +849,23 @@
                     <div class="orel-image-main">
                         <div class="orel-image-content">
                             <div class="orel-icon-large">
-                                <i class="fas fa-award"></i>
+                                <i class="{{ optional($about)->guarantee_icon ?: 'fas fa-award' }}"></i>
                             </div>
-                            <h3>Keyfiyyət Zəmanəti</h3>
-                            <p>ISO sertifikatlı xidmət</p>
+                            <h3>{{ optional($about)->guarantee_title ?: 'Keyfiyyət Zəmanəti' }}</h3>
+                            <p>{{ optional($about)->guarantee_subtitle ?: 'ISO sertifikatlı xidmət' }}</p>
                         </div>
                     </div>
-                    <div class="orel-floating-card orel-top-right">
+                    @foreach($statCardsList as $i => $stat)
+                    <div class="orel-floating-card {{ $statPositions[$i] ?? '' }}">
                         <div class="orel-fc-icon">
-                            <i class="fas fa-users"></i>
+                            <i class="{{ data_get($stat, 'icon', 'fas fa-star') }}"></i>
                         </div>
                         <div class="orel-fc-text">
-                            <strong>500+</strong>
-                            <span>Razı Müştəri</span>
+                            <strong>{{ data_get($stat, 'value') }}</strong>
+                            <span>{{ data_get($stat, 'label') }}</span>
                         </div>
                     </div>
-                    <div class="orel-floating-card orel-bottom-left">
-                        <div class="orel-fc-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div class="orel-fc-text">
-                            <strong>50+</strong>
-                            <span>Tərəfdaş</span>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

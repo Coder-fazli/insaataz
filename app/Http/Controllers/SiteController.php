@@ -159,6 +159,10 @@ class SiteController extends Controller
         $certificates = Certificate::all();
         $videos = Video::latest()->limit(2)->get();
 
+        $featureCards = \App\Models\AboutFeatureCard::orderBy('sort_order')->orderBy('id')->get();
+        $checklistItems = \App\Models\AboutChecklistItem::orderBy('sort_order')->orderBy('id')->get();
+        $statCards = \App\Models\AboutStatCard::orderBy('sort_order')->orderBy('id')->get();
+
         // Get partners from database
         $partners = Partner::all();
 
@@ -191,7 +195,7 @@ class SiteController extends Controller
         // Merge with database partners
         $partners = $partners->concat([$partner1, $partner2, $partner3, $partner4, $partner5]);
 
-        return view('site.about', compact('about', 'certificates', 'partners', 'videos'));
+        return view('site.about', compact('about', 'certificates', 'partners', 'videos', 'featureCards', 'checklistItems', 'statCards'));
     }
 
     public function addToCart()
