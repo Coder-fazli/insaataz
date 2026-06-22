@@ -13,6 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
+        if (Schema::hasColumn('partners', 'link')) {
+            return;
+        }
+
         Schema::table('partners', function (Blueprint $table) {
             $table->string('link', 500)->nullable()->after('slug');
         });

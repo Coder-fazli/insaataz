@@ -255,8 +255,16 @@ Route::get('/run-about-migrations', function () {
     }
 
     try {
-        \Artisan::call('migrate', ['--force' => true]);
-        $migrate = \Artisan::output();
+        // Run ONLY the About-section migrations by path so unrelated older
+        // pending migrations can't block them.
+        $migrate = '';
+        foreach ([
+            'database/migrations/2026_06_22_120000_add_sections_to_about_table.php',
+            'database/migrations/2026_06_22_120100_create_about_section_tables.php',
+        ] as $path) {
+            \Artisan::call('migrate', ['--force' => true, '--path' => $path]);
+            $migrate .= \Artisan::output() . "\n";
+        }
 
         \Artisan::call('db:seed', ['--class' => 'AboutSeeder', '--force' => true]);
         $seed = \Artisan::output();

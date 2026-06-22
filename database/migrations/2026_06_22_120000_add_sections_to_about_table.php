@@ -12,6 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
+        if (Schema::hasColumn('about', 'hero_title')) {
+            return;
+        }
+
         Schema::table('about', function (Blueprint $table) {
             // Hero section
             $table->json('hero_badge')->nullable();
