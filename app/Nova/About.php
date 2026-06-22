@@ -70,6 +70,11 @@ class About extends Resource
                     ->help('Logo shown in the hero card. Leave empty to use the default footer logo.'),
             ]),
 
+            new Panel('Company Description (rich text)', [
+                CkEditor::make('Company Description', 'description')->translatable()
+                    ->help('Rich-text block shown right after the feature cards. Leave empty to hide this section.'),
+            ]),
+
             new Panel('Content Section ("Why us")', [
                 Text::make('Content Badge', 'whyus_badge')->translatable()
                     ->help('e.g. Niyə Biz?'),

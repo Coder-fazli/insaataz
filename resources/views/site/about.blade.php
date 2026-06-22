@@ -571,6 +571,67 @@
     box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 }
 
+/* Rich-text Company Description Section */
+.orel-richtext-section {
+    padding: 20px 0 50px;
+    background: #ffffff;
+    font-family: 'Plus Jakarta Sans', 'Roboto', sans-serif;
+}
+
+.orel-richtext-content {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #475569;
+}
+
+.orel-richtext-content h1,
+.orel-richtext-content h2,
+.orel-richtext-content h3,
+.orel-richtext-content h4 {
+    color: #0f172a;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 28px 0 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.orel-richtext-content h2 { font-size: 28px; }
+.orel-richtext-content h3 { font-size: 22px; }
+
+.orel-richtext-content p {
+    margin-bottom: 18px;
+}
+
+.orel-richtext-content strong { color: #1e293b; }
+
+.orel-richtext-content a {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+.orel-richtext-content ul,
+.orel-richtext-content ol {
+    margin: 0 0 18px;
+    padding-left: 22px;
+}
+
+.orel-richtext-content li { margin-bottom: 8px; }
+
+.orel-richtext-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .orel-richtext-section { padding: 10px 0 30px; }
+    .orel-richtext-content { font-size: 15px; line-height: 1.8; }
+    .orel-richtext-content h2 { font-size: 24px; }
+    .orel-richtext-content h3 { font-size: 20px; }
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .orel-hero-content {
@@ -801,6 +862,17 @@
         </div>
     </div>
 </section>
+
+<!-- Company Description (rich text) -->
+@if(trim(strip_tags(optional($about)->description ?? '')) !== '')
+<section class="orel-richtext-section">
+    <div class="container">
+        <div class="orel-richtext-content">
+            {!! optional($about)->description !!}
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- Content Section -->
 @php
